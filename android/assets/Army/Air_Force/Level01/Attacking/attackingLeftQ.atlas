@@ -1,0 +1,110 @@
+
+attackingLeftQ.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+FantasyArcher_01_Attack1
+  rotate: false
+  xy: 1, 1
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 210
+FantasyArcher_01_Attack1
+  rotate: false
+  xy: 515, 1
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 211
+FantasyArcher_01_Attack1
+  rotate: false
+  xy: 1029, 1
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 212
+FantasyArcher_01_Attack1
+  rotate: false
+  xy: 1543, 1
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 213
+FantasyArcher_01_Attack1
+  rotate: false
+  xy: 2057, 1
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 214
+FantasyArcher_01_Attack1
+  rotate: false
+  xy: 2571, 1
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 215
+FantasyArcher_01_Attack1
+  rotate: false
+  xy: 3085, 1
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 216
+FantasyArcher_01_Attack1
+  rotate: false
+  xy: 3599, 1
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 217
+FantasyArcher_01_Attack1
+  rotate: false
+  xy: 4113, 1
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 218
+FantasyArcher_01_Attack1
+  rotate: false
+  xy: 4627, 1
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 219
+FantasyArcher_01_Attack1
+  rotate: false
+  xy: 5141, 1
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 220
+FantasyArcher_01_Attack1
+  rotate: false
+  xy: 5655, 1
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 221
+FantasyArcher_01_Attack1
+  rotate: false
+  xy: 6169, 1
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 222
+FantasyArcher_01_Attack1
+  rotate: false
+  xy: 6683, 1
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 223
+FantasyArcher_01_Attack1
+  rotate: false
+  xy: 7197, 1
+  size: 512, 512
+  orig: 512, 512
+  offset: 0, 0
+  index: 224

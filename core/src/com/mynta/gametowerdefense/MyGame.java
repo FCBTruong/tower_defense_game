@@ -1,117 +1,147 @@
 package com.mynta.gametowerdefense;
 
 import com.badlogic.gdx.ApplicationListener;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
-import com.badlogic.gdx.utils.Timer;
-import com.badlogic.gdx.utils.Timer.Task;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.input.GestureDetector;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
+import com.mynta.gametowerdefense.screens.LoadingScreen;
+import com.mynta.gametowerdefense.utils.Constants;
+import com.mynta.gametowerdefense.utils.TouchInfo;
 
-public class MyGame implements ApplicationListener {
-	private SpriteBatch batch;
-	private TextureAtlas textureAtlas;
-	private Sprite sprite;
-	private int currentFrame = 1;
-	private String currentAtlasKey = new String("0001");
+import java.util.ArrayList;
+import java.util.List;
 
-	@Override
-	public void create() {
-		batch = new SpriteBatch();
-		textureAtlas = new TextureAtlas(Gdx.files.internal("spritesheet.atlas"));
-		AtlasRegion region = textureAtlas.findRegion("0001");
-		sprite = new Sprite(region);
-		sprite.setPosition(120, 180);
-		sprite.scale(0.5f);
-		Timer.schedule(new Task(){
-						   @Override
-						   public void run() {
-							   currentFrame++;
-							   if(currentFrame > 20)
-								   currentFrame = 1;
+import static com.mynta.gametowerdefense.utils.Constants.*;
 
-							   // ATTENTION! String.format() doesnt work under GWT for god knows why...
-							   currentAtlasKey = String.format("%04d", currentFrame);
-							   sprite.setRegion(textureAtlas.findRegion(currentAtlasKey));
-						   }
-					   }
-				,0,30/30.0f);
-	}
+public class MyGame extends Game implements ApplicationListener, GestureDetector.GestureListener {
+    public static final AssetManager manager = new AssetManager();
 
-	@Override
-	public void dispose() {
-		batch.dispose();
-		textureAtlas.dispose();
-	}
-
-	@Override
-	public void render() {
-		Gdx.gl.glClearColor(1, 1, 0, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
-		batch.begin();
-		sprite.draw(batch);
-		batch.end();
-	}
-
-	@Override
-	public void resize(int width, int height) {
-	}
-
-	@Override
-	public void pause() {
-	}
-
-	@Override
-	public void resume() {
-	}
-}
-
-/*
-import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.*;
-
-public class MyGame extends ApplicationAdapter {
-	SpriteBatch batch;
-	private BitmapFont font;
-    private Texture img;
-
-	@Override
-	public void create () {
-		batch = new SpriteBatch();
-        img = new Texture("jet.png");
-	}
-
-	@Override
-	public void render () {
-		Gdx.gl.glClearColor(1, 1, 1, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		batch.begin();
-		batch.draw(img, 100, 100);
-		batch.end();
-	}
-	
-	@Override
-	public void dispose () {
-		batch.dispose();
-		img.dispose();
-	}
-
-	@Override
-	public void resize(int width, int height){
-
-	}
     @Override
-	public void pause(){
+    public void create(){
+        //** read Data from file */
+        FileHandle file = Gdx.files.internal("Data/Data.txt");
+        String text = file.readString();
+        String wordsArray[] = text.split(" ");
+        List<String> words = new ArrayList<>();
+        for(String word : wordsArray) {
+            words.add(word);
+        }
+        if(words.get(0).equals("false")) SOUND_STATUS = false;
+        else SOUND_STATUS = true;
+        if(words.get(1).equals("false")) MUSIC_STATUS = false;
+        else MUSIC_STATUS = true;
+        LEVEL_CURRENT = Integer.valueOf(words.get(2));
 
-	}
-	@Override
-	public void resume(){
+        Gdx.input.setInputProcessor(new GestureDetector(this));
+        Gdx.input.setCatchBackKey(true);
+        setupCamera();
+        setScreen(new LoadingScreen(this));
+    }
 
-	}-->
-}*/
+    public static void setupCamera(){
+        touchPos = new Vector3();
+        camera = new OrthographicCamera(Constants.VIEWPORT_WIDTH,Constants.VIEWPORT_HEIGHT);
+        camera.position.set( Constants.VIEWPORT_WIDTH/2 + (GAME_WIDTH - VIEWPORT_WIDTH) / 2 ,
+                Constants.VIEWPORT_HEIGHT/2 + (GAME_HEIGHT - VIEWPORT_HEIGHT) / 2,0f);
+        camera.update();
+    }
+
+    @Override
+    public void render() {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.BACK)) {
+            TouchInfo.back = true;
+        } else TouchInfo.back = false;
+
+        if (Gdx.input.justTouched()) TouchInfo.touched = true;
+        else {
+            TouchInfo.touched = false;
+        }
+        super.render();
+    }
+
+    @Override
+    public void resize(int width, int height){
+        super.resize(width, height);
+    }
+
+    @Override
+    public void pause(){
+        super.pause();
+    }
+
+    @Override
+    public void resume(){
+        super.resume();
+    }
+
+    @Override
+    public void dispose() {
+        super.dispose();
+        manager.dispose();
+    }
+
+    @Override
+    public boolean touchDown(float x, float y, int pointer, int button) {
+        camera.unproject(touchPos.set(x,y,0));
+        TouchInfo.touchX = touchPos.x;
+        TouchInfo.touchY = touchPos.y;
+        TouchInfo.touched = true;
+        return false;
+    }
+
+    @Override
+    public boolean tap(float x, float y, int count, int button) {
+        return false;
+    }
+
+    @Override
+    public boolean longPress(float x, float y) {
+       // camera.translate(100 , 0);
+        return false;
+    }
+
+    @Override
+    public boolean fling(float velocityX, float velocityY, int button) {
+        return false;
+    }
+
+    @Override
+    public boolean pan(float x, float y, float deltaX, float deltaY) {
+          if(deltaY + camera.position.y + VIEWPORT_HEIGHT/2  <= GAME_HEIGHT && deltaY + camera.position.y - VIEWPORT_HEIGHT/2 >= 0)
+          {
+              camera.translate(0 , deltaY);
+          }
+          if(-deltaX + camera.position.x + VIEWPORT_WIDTH/2<= GAME_WIDTH && -deltaX + camera.position.x - VIEWPORT_WIDTH/2 >= 0) {
+              camera.translate(-deltaX, 0);
+          }
+          camera.update();
+        return false;
+    }
+
+    @Override
+    public boolean panStop(float x, float y, int pointer, int button) {
+       return false;
+    }
+
+    @Override
+    public boolean zoom(float initialDistance, float distance) {
+          //  camera.position.set( Constants.VIEWPORT_WIDTH/2,Constants.VIEWPORT_HEIGHT/2,100f);
+       // camera.update();
+        return false;
+    }
+
+    @Override
+    public boolean pinch(Vector2 initialPointer1, Vector2 initialPointer2, Vector2 pointer1, Vector2 pointer2) {
+        return false;
+    }
+
+    @Override
+    public void pinchStop() {
+    }
+}

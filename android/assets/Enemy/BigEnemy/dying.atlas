@@ -1,0 +1,54 @@
+
+dying.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+DIE
+  rotate: false
+  xy: 1, 1
+  size: 682, 366
+  orig: 682, 366
+  offset: 0, 0
+  index: 0
+DIE
+  rotate: false
+  xy: 685, 1
+  size: 682, 366
+  orig: 682, 366
+  offset: 0, 0
+  index: 1
+DIE
+  rotate: false
+  xy: 1369, 1
+  size: 682, 366
+  orig: 682, 366
+  offset: 0, 0
+  index: 2
+DIE
+  rotate: false
+  xy: 2053, 1
+  size: 682, 366
+  orig: 682, 366
+  offset: 0, 0
+  index: 3
+DIE
+  rotate: false
+  xy: 2737, 1
+  size: 682, 366
+  orig: 682, 366
+  offset: 0, 0
+  index: 4
+DIE
+  rotate: false
+  xy: 3421, 1
+  size: 682, 366
+  orig: 682, 366
+  offset: 0, 0
+  index: 5
+DIE
+  rotate: false
+  xy: 4105, 1
+  size: 682, 366
+  orig: 682, 366
+  offset: 0, 0
+  index: 6
