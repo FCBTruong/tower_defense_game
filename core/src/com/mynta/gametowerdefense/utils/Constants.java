@@ -51,7 +51,7 @@ public class Constants {
     public static MapGame MAP_LEVEL1;
 
     public static int LEVEL_CURRENT;
-    public static int LEVEL_MAX = 5;
+    public static int LEVEL_MAX = 1;
 
     public static ChooseLevel[] chooseLevels = new ChooseLevel[LEVEL_MAX + 1];
 

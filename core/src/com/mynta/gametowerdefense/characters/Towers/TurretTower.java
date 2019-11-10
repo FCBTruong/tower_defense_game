@@ -22,7 +22,7 @@ public class TurretTower extends Tower {
         levelCurrent = 1;
         levelMax = 4;
         towerType = TowerType.TURRET;
-        damage = 2;
+        damage = 3;
         priceUp = 70;
     }
 
@@ -45,7 +45,7 @@ public class TurretTower extends Tower {
             switch (levelCurrent){
                 case 2:
                     placeTower = new Sprite(TowerAssets.textureTurretTowerLevel2);
-                    damage += 2;
+                    damage += 4;
                     price = price + priceUp;
                     PlayGame.coinNumber -= price;
                     placeTower.setPosition(positionCenter.x - 75, positionCenter.y - 70);
@@ -54,7 +54,7 @@ public class TurretTower extends Tower {
                     placeTower = new Sprite(TowerAssets.textureTurretTowerLevel3);
                     bullet = new TurretBullet(3);
                     bullet.setPosition(new CoOrdinate(positionCenter.x - 10,positionCenter.y + 80));
-                    damage += 3;
+                    damage += 5;
                     price = price + priceUp;
                     PlayGame.coinNumber -= price;
                     placeTower.setPosition(positionCenter.x - 75, positionCenter.y - 70);
@@ -64,7 +64,7 @@ public class TurretTower extends Tower {
                     placeTower.setPosition(positionCenter.x - 75, positionCenter.y - 70);
                     bullet = new TurretBullet(4);
                     bullet.setPosition(new CoOrdinate(positionCenter.x - 10,positionCenter.y + 80));
-                    damage += 4;
+                    damage += 7;
                     price = price + priceUp;
                     PlayGame.coinNumber -= price;
                     break;

@@ -117,15 +117,16 @@ public class Settings {
                 positionMusic.y = Constants.camera.position.y - 150;
 
                 if(CalculationFunction.rectangleDetect(positionSound,300,300,TouchInfo.touchX,TouchInfo.touchY)){
-
                     SOUND_STATUS = !SOUND_STATUS;
-                    FileHandle file = new FileHandle("Data/Data.txt");
-                    file.writeString(SOUND_STATUS + " " + MUSIC_STATUS + " " + LEVEL_CURRENT,false);
+                    System.out.println("11");
+                    FileHandle file = Gdx.files.internal("Data/Data.txt");
+                //    System.out.println("12");
+                    //file.writeString(SOUND_STATUS + " " + MUSIC_STATUS + " " + LEVEL_CURRENT,false);
                 }
                 if(CalculationFunction.rectangleDetect(positionMusic,300,300,TouchInfo.touchX,TouchInfo.touchY)){
                     MUSIC_STATUS = !MUSIC_STATUS;
                     FileHandle file = new FileHandle("Data/Data.txt");
-                    file.writeString(SOUND_STATUS + " " + MUSIC_STATUS + " " + LEVEL_CURRENT,false);
+                    //file.writeString(SOUND_STATUS + " " + MUSIC_STATUS + " " + LEVEL_CURRENT,false);
                 }
             }
             if(GameStage.gameStatus == GameStatus.PLAY_GAME){

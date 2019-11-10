@@ -9,12 +9,8 @@ import com.mynta.gametowerdefense.Assets.CommonAssets;
 import com.mynta.gametowerdefense.Assets.SoundAssets;
 import com.mynta.gametowerdefense.MapGame.MapGame;
 import com.mynta.gametowerdefense.MyGame;
-import com.mynta.gametowerdefense.characters.Army.ArmyInfantry;
 import com.mynta.gametowerdefense.characters.Towers.*;
-import com.mynta.gametowerdefense.utils.AnimationAct;
-import com.mynta.gametowerdefense.utils.CoOrdinate;
-import com.mynta.gametowerdefense.utils.Constants;
-import com.mynta.gametowerdefense.utils.TouchInfo;
+import com.mynta.gametowerdefense.utils.*;
 
 import static com.mynta.gametowerdefense.stages.ResultPlay.DEFEAT;
 import static com.mynta.gametowerdefense.stages.ResultPlay.WIN;
@@ -61,15 +57,17 @@ public class PlayGame {
 
     private float coolTimeEndGame;
     private float waitingTime;
+    private boolean startWave;
 
-    ArmyInfantry arm = new ArmyInfantry();
+    private Sprite spriteStartWave;
+    private float sizeStartWave;
 
     public PlayGame(MapGame mapGame) {
-        arm.setPosition(new CoOrdinate(1000,1000));
         this.mapGame = mapGame;
         indexWaveCurrent = 0;
         waveShiftTime = 0;
         waitingTime = 60;
+        startWave = false;
 
         Coin = new AnimationAct();
         Coin.setBool(false);
@@ -104,6 +102,9 @@ public class PlayGame {
 
         defeat = new Sprite(CommonAssets.textureDefeat);
         victory = new Sprite(CommonAssets.textureVictory);
+        spriteStartWave = new Sprite(CommonAssets.textureStartWave);
+        spriteStartWave.setPosition(0,420);
+        sizeStartWave = 150;
         coolTimeEndGame = 50;
     }
 
@@ -123,7 +124,7 @@ public class PlayGame {
 
         if(resultPlay == WIN){
             if(GameStage.level == LEVEL_CURRENT) {
-                LEVEL_CURRENT++;
+                if(LEVEL_CURRENT < LEVEL_MAX) LEVEL_CURRENT++;
                 FileHandle file = new FileHandle("Data/Data.txt");
                 file.writeString(SOUND_STATUS + " " + MUSIC_STATUS + " " + LEVEL_CURRENT,false);
             }
@@ -155,6 +156,7 @@ public class PlayGame {
             if(waveShiftTime <= 0) {
                 indexWaveCurrent++;
                 if(indexWaveCurrent == waveNumber) {
+                    System.out.println("aaa");
                     resultPlay = WIN;
                     indexWaveCurrent --;
                     return;
@@ -171,40 +173,58 @@ public class PlayGame {
             mapGame.towerList[i].InputTouch();
             if(mapGame.towerList[i].getTowerType() == TowerType.NONE) {
                 if (mapGame.towerList[i].getSelected() == TowerType.ARCHER) {
+                    CoOrdinate positionOrigin = mapGame.towerList[i].getPositionOrigin();
                     CoOrdinate positionOfTower = mapGame.towerList[i].getPosition();
                     mapGame.towerList[i] = new ArcherTower();
+                    mapGame.towerList[i].setPositionOrigin(positionOrigin);
                     mapGame.towerList[i].setPosition(positionOfTower);
                 }
                 else if(mapGame.towerList[i].getSelected() == TowerType.APPRENTICE_MAGE){
+                    CoOrdinate positionOrigin = mapGame.towerList[i].getPositionOrigin();
                     CoOrdinate positionOfTower = mapGame.towerList[i].getPosition();
                     mapGame.towerList[i] = new ApprenticeMageTower();
+                    mapGame.towerList[i].setPositionOrigin(positionOrigin);
                     mapGame.towerList[i].setPosition(positionOfTower);
                 }
                 else if(mapGame.towerList[i].getSelected() == TowerType.TURRET){
+                    CoOrdinate positionOrigin = mapGame.towerList[i].getPositionOrigin();
                     CoOrdinate positionOfTower = mapGame.towerList[i].getPosition();
                     mapGame.towerList[i] = new TurretTower();
+                    mapGame.towerList[i].setPositionOrigin(positionOrigin);
                     mapGame.towerList[i].setPosition(positionOfTower);
                 }
                 else if(mapGame.towerList[i].getSelected() == TowerType.ARMY_INFANTRY){
+                    CoOrdinate positionOrigin = mapGame.towerList[i].getPositionOrigin();
                     CoOrdinate positionOfTower = mapGame.towerList[i].getPosition();
                     mapGame.towerList[i] = new ArmyTower();
+                    mapGame.towerList[i].setPositionOrigin(positionOrigin);
                     mapGame.towerList[i].setPosition(positionOfTower);
                 }
             }
             else {
                 if(mapGame.towerList[i].getSelected() == TowerType.NONE){
+                    CoOrdinate positionOrigin = mapGame.towerList[i].getPositionOrigin();
                     CoOrdinate positionOfTower = mapGame.towerList[i].getPosition();
                     mapGame.towerList[i] = new Tower();
+                    mapGame.towerList[i].setPositionOrigin(positionOrigin);
                     mapGame.towerList[i].setPosition(positionOfTower);
                 }
             }
         }
 
+        if(!startWave){
+            if(TouchInfo.touched){
+                if(CalculationFunction.circleDetect(new CoOrdinate(75,495),75,TouchInfo.touchX,TouchInfo.touchY))
+                startWave = true;
+            }
+        }
         /**
          *  Check waves are finished or not
          */
-        if (indexWaveCurrent < mapGame.waveNumber)
-            mapGame.waveList.get(indexWaveCurrent).move();
+        if(startWave) {
+            if (indexWaveCurrent < mapGame.waveNumber)
+                mapGame.waveList.get(indexWaveCurrent).move();
+        }
 
         /**
          * Check that the tower is installed and if the enemy is in range.
@@ -286,6 +306,13 @@ public class PlayGame {
 
         pause.setPosition(positionPause.x, positionPause.y);
         pause.draw(batch);
+        if(!startWave) {
+            sizeStartWave -= 0.5;
+            if(sizeStartWave <= 120) sizeStartWave = 150;
+            spriteStartWave.setSize(sizeStartWave,sizeStartWave);
+            spriteStartWave.setPosition((150 - sizeStartWave)/2,420 + (150 - sizeStartWave)/2);
+            spriteStartWave.draw(batch);
+        }
     }
 
     public void dispose(){

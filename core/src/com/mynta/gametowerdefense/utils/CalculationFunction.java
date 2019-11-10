@@ -43,7 +43,7 @@ public class CalculationFunction {
     public static boolean moveToFight(CoOrdinate startPoint, CoOrdinate destination, float speed){
         float r = (destination.x - startPoint.x) * (destination.x - startPoint.x) + (destination.y - startPoint.y) *
                 (destination.y - startPoint.y);
-        if(r <= speed * speed + 30){
+        if(r <= speed * speed + 16){
             startPoint.x = destination.x;
             startPoint.y = destination.y;
             return true;

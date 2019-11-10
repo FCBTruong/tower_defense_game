@@ -9,8 +9,10 @@ public class BigEnemy extends CommonCharacter {
         runningAnimationRight.setAnimation(BigEnemyAssets.textureAtlasRunRight);
         dyingAnimation.setScale(1.3f);
         dyingAnimation.setAnimation(BigEnemyAssets.textureAtlasDying);
+        attackingAnimationRight.setAnimation(BigEnemyAssets.textureAtlasAttacking);
+        attackingAnimationLeft.setAnimation(BigEnemyAssets.textureAtlasAttacking);
         setBlood(200);
-        setDamage(100);
+        setDamage(20);
         disXofPositionBlood = 67;
         disYofPositionBlood = 155;
         width = 225;

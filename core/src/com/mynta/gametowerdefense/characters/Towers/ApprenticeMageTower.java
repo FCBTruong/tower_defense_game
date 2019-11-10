@@ -19,7 +19,7 @@ public class ApprenticeMageTower extends Tower {
         towerType = TowerType.APPRENTICE_MAGE;
         apprenticeMage = new ApprenticeMage();
         apprenticeMage.setPosition(new CoOrdinate(position.x + 55,position.y + 121));
-        damage = 10;
+        damage = 15;
     }
 
     public void setPosition(CoOrdinate position){
@@ -45,7 +45,7 @@ public class ApprenticeMageTower extends Tower {
                     placeTower = new Sprite(TowerAssets.textureApprenticeMageTowerLevel3);
                     apprenticeMage.magicBullet = new MagicBullet(3);
                     apprenticeMage.magicBullet.setPosition(new CoOrdinate(apprenticeMage.positionCenter.x,apprenticeMage.positionCenter.y));
-                    damage += 20;
+                    damage += 25;
                     price = price + priceUp;
                     PlayGame.coinNumber -= price;
                     placeTower.setPosition(positionCenter.x - placeTower.getWidth() / 2,positionCenter.y - placeTower.getHeight()/2 + 10);

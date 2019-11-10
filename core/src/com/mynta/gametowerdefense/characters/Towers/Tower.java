@@ -57,6 +57,8 @@ public class Tower {
     protected int levelMax;
     protected int priceUp;
 
+    protected CoOrdinate positionOrigin; // just for Army Tower;
+
     protected float COOL_TIME;
 
     public Tower(){
@@ -131,6 +133,7 @@ public class Tower {
         chooseTurretTower.setPosition(positionCenter.x + 80, positionCenter.y - 230);
         chooseArmyTower.setPosition(positionCenter.x + 80, positionCenter.y + 80);
         chooseArcherTower.setPosition(positionCenter.x -230, positionCenter.y + 80);
+
     }
 
     public TowerType getTowerType() {
@@ -138,6 +141,14 @@ public class Tower {
     }
     public TowerType getSelected(){ return selected; }
     public CoOrdinate getPosition(){ return position; }
+
+    public void setPositionOrigin(CoOrdinate positionOrigin) {
+        this.positionOrigin = positionOrigin;
+    }
+
+    public CoOrdinate getPositionOrigin() {
+        return positionOrigin;
+    }
 
     public void showFirst(SpriteBatch batch){
         placeTower.draw(batch);

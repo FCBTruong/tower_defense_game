@@ -1,9 +1,6 @@
 package com.mynta.gametowerdefense;
 
-import com.badlogic.gdx.ApplicationListener;
-import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
+import com.badlogic.gdx.*;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -25,6 +22,18 @@ public class MyGame extends Game implements ApplicationListener, GestureDetector
     @Override
     public void create(){
         //** read Data from file */
+        Preferences prefs = Gdx.app.getPreferences("myprefs");
+        //If the preference key is empty, create it by putting a value into it
+        if(!prefs.contains("key")) prefs.putInteger("key", 1337);
+
+        //Get value from a preference key "key" (must not be empty)
+        int val = prefs.getInteger("key");
+
+       //Do something with your value and put it back to the preference
+        prefs.putInteger("key", val);
+
+        //This will finally save the changes to storage
+        prefs.flush();
         FileHandle file = Gdx.files.internal("Data/Data.txt");
         String text = file.readString();
         String wordsArray[] = text.split(" ");
@@ -131,8 +140,6 @@ public class MyGame extends Game implements ApplicationListener, GestureDetector
 
     @Override
     public boolean zoom(float initialDistance, float distance) {
-          //  camera.position.set( Constants.VIEWPORT_WIDTH/2,Constants.VIEWPORT_HEIGHT/2,100f);
-       // camera.update();
         return false;
     }
 

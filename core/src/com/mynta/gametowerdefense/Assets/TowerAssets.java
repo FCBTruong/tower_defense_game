@@ -23,6 +23,12 @@ public class TowerAssets {
     public static Texture textureTurretTowerLevel3;
     public static Texture textureTurretTowerLevel4;
 
+    /** Army Tower */
+    public static Texture textureArmyTowerLevel1;
+    public static Texture textureArmyTowerLevel2;
+    public static Texture textureArmyTowerLevel3;
+    public static Texture textureArmyTowerLevel4;
+
     public static void ManagerLoad(){
         MyGame.manager.load("Towers/towerPlace.png", Texture.class);
         MyGame.manager.load("Towers/Archer/towerArrowLevel1.png",Texture.class);
@@ -38,6 +44,11 @@ public class TowerAssets {
         MyGame.manager.load("Towers/Turret/turretTower2.png",Texture.class);
         MyGame.manager.load("Towers/Turret/turretTower3.png",Texture.class);
         MyGame.manager.load("Towers/Turret/turretTower4.png",Texture.class);
+
+        MyGame.manager.load("Towers/ArmyTower/level1.png",Texture.class);
+        MyGame.manager.load("Towers/ArmyTower/level2.png",Texture.class);
+        MyGame.manager.load("Towers/ArmyTower/level3.png",Texture.class);
+        MyGame.manager.load("Towers/ArmyTower/level4.png",Texture.class);
 
     }
 
@@ -74,6 +85,15 @@ public class TowerAssets {
         textureTurretTowerLevel4 = MyGame.manager.get("Towers/Turret/turretTower4.png");
         textureTurretTowerLevel4.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 
+        textureArmyTowerLevel1 = MyGame.manager.get("Towers/ArmyTower/level1.png");
+        textureArmyTowerLevel1.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        textureArmyTowerLevel2 = MyGame.manager.get("Towers/ArmyTower/level2.png");
+        textureArmyTowerLevel2.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        textureArmyTowerLevel3 = MyGame.manager.get("Towers/ArmyTower/level3.png");
+        textureArmyTowerLevel3.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        textureArmyTowerLevel4 = MyGame.manager.get("Towers/ArmyTower/level4.png");
+        textureArmyTowerLevel4.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+
     }
 
     public static void Clean(){
@@ -90,6 +110,11 @@ public class TowerAssets {
         textureTurretTowerLevel2.dispose();
         textureTurretTowerLevel3.dispose();
         textureTurretTowerLevel4.dispose();
+
+        textureArmyTowerLevel1.dispose();
+        textureArmyTowerLevel2.dispose();
+        textureArmyTowerLevel3.dispose();
+        textureArmyTowerLevel4.dispose();
 
         texturePlaceTower.dispose();
     }

@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.mynta.gametowerdefense.Assets.CommonAssets;
+import com.mynta.gametowerdefense.Assets.SoundAssets;
 import com.mynta.gametowerdefense.Scenery.Route;
 import com.mynta.gametowerdefense.enums.CharacterStatus;
 import com.mynta.gametowerdefense.enums.Direction;
@@ -12,7 +13,7 @@ import com.mynta.gametowerdefense.utils.AnimationAct;
 import com.mynta.gametowerdefense.utils.CalculationFunction;
 import com.mynta.gametowerdefense.utils.CoOrdinate;
 
-public abstract class CommonCharacter extends Actor {
+public  class CommonCharacter extends Actor {
     /** Character attributes */
     protected float damage;
     public float bloodCurrent;
@@ -24,7 +25,7 @@ public abstract class CommonCharacter extends Actor {
 
     private float time_dead = 0;
 
-    private Sprite spriteBlood;
+    protected Sprite spriteBlood;
     private Sprite frameBlood;
     protected float disXofPositionBlood;
     protected float disYofPositionBlood;
@@ -51,6 +52,9 @@ public abstract class CommonCharacter extends Actor {
 
     protected CommonCharacter enemy; // need to destroy
     protected float coolDownTime; // time to hit
+    public boolean status; // busy or free
+
+    public CharacterType characterType;
 
     public CommonCharacter(){
 
@@ -61,6 +65,8 @@ public abstract class CommonCharacter extends Actor {
 
         attackingAnimationRight = new AnimationAct();
         attackingAnimationLeft = new AnimationAct();
+        attackingAnimationRight.setBool(false);
+        attackingAnimationLeft.setBool(false);
 
         dyingAnimation = new AnimationAct();
         dyingAnimation.setBool(false);
@@ -99,6 +105,8 @@ public abstract class CommonCharacter extends Actor {
         bloodLength = 75;
         direction = Direction.GO_RIGHT;
         coolDownTime = 0.5f;
+        status = false;
+        characterType = CharacterType.NONE;
     }
 
     public void setPosition(CoOrdinate positionCurrent) {
@@ -107,6 +115,10 @@ public abstract class CommonCharacter extends Actor {
         positionCenter.y = positionCurrent.y + height / 2;
         alivePosition.x = positionCurrent.x;
         alivePosition.y = positionCurrent.y;
+    }
+
+    public float getBloodInitial() {
+        return bloodInitial;
     }
 
     public void setSpeed(float speed){
@@ -147,12 +159,15 @@ public abstract class CommonCharacter extends Actor {
              if(time_dead >= 100) characterStatus = CharacterStatus.NONE;
              break;
              case RUN:
-                 switch (direction){
-                     case GO_RIGHT:runningAnimationRight.show(batch,this.positionCurrent,width,height);
-                     break;
-                     case GO_LEFT:
+                 switch (direction) {
+                     case GO_RIGHT:
+                         runningAnimationRight.show(batch, this.positionCurrent, width, height);
                          break;
-                     case GO_UP: runningAnimationUp.show(batch,this.positionCurrent,width,height);
+                     case GO_LEFT:
+                         runningAnimationLeft.show(batch, this.positionCurrent, width, height);
+                         break;
+                     case GO_UP:
+                         runningAnimationUp.show(batch, this.positionCurrent, width, height);
                          // to do
                          break;
                      case GO_DOWN:
@@ -212,8 +227,10 @@ public abstract class CommonCharacter extends Actor {
     public void attack(){
         coolDownTime -= 0.5;
         if(coolDownTime == 0) {
-            coolDownTime = 60;
+            coolDownTime = 30;
             enemy.bloodCurrent -= damage;
+            if(characterType == CharacterType.ARMY_INFANTRY) SoundAssets.swordSound.play();
+            if(enemy.bloodCurrent < 0) coolDownTime = 0.5f;
             attackingAnimationRight.setElapsedTime(0);
             attackingAnimationLeft.setElapsedTime(0);
         }

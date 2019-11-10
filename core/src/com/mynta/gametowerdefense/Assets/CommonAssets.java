@@ -7,10 +7,13 @@ import com.mynta.gametowerdefense.MyGame;
 
 public class CommonAssets {
     public static Texture textureBlood;
+    public static Texture textureFrameBlood;
+    public static Texture textureBloodArmy;
+
     public static TextureAtlas textureAtlasFlag;
     public static Texture textureFrameBuyTower;
     public static Texture textureSellTower;
-    public static Texture textureFrameBlood;
+
     public static TextureAtlas textureAtlasCoin;
     public static Texture textureHeart;
     public static Texture textureSpriteWave;
@@ -39,6 +42,8 @@ public class CommonAssets {
 
     public static Texture textureX; // off Sound or Music
 
+    public static Texture textureStartWave;
+
     /**
      * Font Assets
      */
@@ -46,7 +51,7 @@ public class CommonAssets {
     public static BitmapFont priceFont;
 
     public static void ManagerLoad(){
-        MyGame.manager.load("blood.png",Texture.class);
+        MyGame.manager.load("Common/blood.png",Texture.class);
 
         MyGame.manager.load("Scenery/flag.atlas",TextureAtlas.class);
 
@@ -67,6 +72,8 @@ public class CommonAssets {
         MyGame.manager.load("Common/Cointail.png",Texture.class);
 
         MyGame.manager.load("Common/frameRange.png",Texture.class);
+
+        MyGame.manager.load("Common/bloodArmy.png",Texture.class);
 
         MyGame.manager.load("Common/setting.png",Texture.class);
         MyGame.manager.load("Common/settingIcon.png", Texture.class);
@@ -104,10 +111,11 @@ public class CommonAssets {
         MyGame.manager.load("Common/victory.png",Texture.class);
 
         MyGame.manager.load("Common/x.png",Texture.class);
+        MyGame.manager.load("Common/start.png",Texture.class);
     }
 
     public static void LoadToProject() {
-        textureBlood = MyGame.manager.get("blood.png");
+        textureBlood = MyGame.manager.get("Common/blood.png");
         textureBlood.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 
         textureAtlasFlag = MyGame.manager.get("Scenery/flag.atlas");
@@ -120,6 +128,9 @@ public class CommonAssets {
 
         textureFrameBlood = MyGame.manager.get("Common/frameBlood.png");
         textureFrameBlood.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+
+        textureBloodArmy = MyGame.manager.get("Common/bloodArmy.png");
+        textureBloodArmy.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 
         textureAtlasCoin = MyGame.manager.get("Common/Coin.atlas");
 
@@ -190,6 +201,8 @@ public class CommonAssets {
 
         textureX = MyGame.manager.get("Common/x.png");
         textureX.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        textureStartWave = MyGame.manager.get("Common/start.png");
+        textureStartWave.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
     }
 
     public static void Clean(){
@@ -227,5 +240,7 @@ public class CommonAssets {
         textureVictory.dispose();
 
         textureX.dispose();
+        textureBloodArmy.dispose();
+        textureStartWave.dispose();
     }
 }

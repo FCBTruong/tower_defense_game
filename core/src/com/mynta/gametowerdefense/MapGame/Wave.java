@@ -103,7 +103,7 @@ public class Wave {
             if(flyMonsterList.get(i).getStatus() == CharacterStatus.DEAD) continue;
             if(flyMonsterList.get(i).getStatus() == CharacterStatus.NONE) continue;
             if(tower.radar(flyMonsterList.get(i))){
-                break;
+                return;
             }
         }
         for(int i = 0; i < witchNumber; i ++)
@@ -111,14 +111,14 @@ public class Wave {
             if(witchList.get(i).getStatus() == CharacterStatus.DEAD) continue;
             if(witchList.get(i).getStatus() == CharacterStatus.NONE) continue;
             if(tower.radar(witchList.get(i))){
-                break;
+               //return;
             }
         }
         for(int i = 0; i < bigEnemyNumber; i ++){
             if(bigEnemyList.get(i).getStatus() == CharacterStatus.DEAD) continue;
             if(bigEnemyList.get(i).getStatus() == CharacterStatus.NONE) continue;
             if(tower.radar(bigEnemyList.get(i))){
-                break;
+                return;
             }
         }
     }
@@ -148,6 +148,7 @@ public class Wave {
             if(bigEnemyList.get(i).getStatus() != CharacterStatus.NONE && bigEnemyList.get(i).getStatus() != CharacterStatus.DEAD)
                 return  true;
         }
+        System.out.println("aaa");
         return false;
     }
 }

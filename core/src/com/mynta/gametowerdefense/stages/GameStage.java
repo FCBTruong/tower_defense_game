@@ -34,7 +34,6 @@ public class GameStage extends Stage implements InputProcessor {
         Constants.loadData();
         level = 0;
         settings = new Settings();
-        //playGame = new PlayGame(MAP_LEVEL1);
         batch = new SpriteBatch();
         gameStatus = GameStatus.MAIN_GAME_SCREEN;
         mainGameScreen = new Sprite(CommonAssets.textureMainGameScreen);
