@@ -7,6 +7,7 @@ import com.mynta.gametowerdefense.Assets.TowerAssets;
 import com.mynta.gametowerdefense.Weapons.Arrow;
 import com.mynta.gametowerdefense.characters.Army.Archer;
 import com.mynta.gametowerdefense.enums.CharacterStatus;
+import com.mynta.gametowerdefense.enums.Direction;
 import com.mynta.gametowerdefense.stages.PlayGame;
 import com.mynta.gametowerdefense.utils.CoOrdinate;
 import com.mynta.gametowerdefense.utils.Constants;
@@ -32,7 +33,7 @@ public class ArcherTower extends Tower {
         levelCurrent = 1;
         levelMax = 4;
         towerType = TowerType.ARCHER;
-        damage = 100;
+        damage = 10;
     }
 
     public void upGrade(){
@@ -88,6 +89,10 @@ public class ArcherTower extends Tower {
                 archer.coolTime += 0.5;
             }
             else {
+                if(archer.positionCenter.x > enemy.positionCenter.x){
+                    archer.direction = Direction.GO_LEFT;
+                }
+                else archer.direction = Direction.GO_RIGHT;
                 archer.status = true;
                 archer.characterStatus = CharacterStatus.ALIVE;
                 if (archer.shoot(enemy.positionCenter) == true) {

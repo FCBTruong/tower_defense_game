@@ -49,9 +49,10 @@ public class Constants {
     public static Vector3 touchPos;
 
     public static MapGame MAP_LEVEL1;
+    public static MapGame MAP_LEVEL2;
 
     public static int LEVEL_CURRENT;
-    public static int LEVEL_MAX = 1;
+    public static int LEVEL_MAX = 2;
 
     public static ChooseLevel[] chooseLevels = new ChooseLevel[LEVEL_MAX + 1];
 
@@ -60,6 +61,7 @@ public class Constants {
            chooseLevels[i] = new ChooseLevel(i);
        }
        chooseLevels[1].setPosition(new CoOrdinate(1700,1290));
+       chooseLevels[2].setPosition(new CoOrdinate(1900,1100));
     }
 
     // ** Data Game */

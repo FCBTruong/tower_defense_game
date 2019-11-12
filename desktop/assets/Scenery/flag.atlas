@@ -1,0 +1,75 @@
+
+flag.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Medieval_Castle_Level02_sprite01
+  rotate: false
+  xy: 1, 1
+  size: 367, 321
+  orig: 367, 321
+  offset: 0, 0
+  index: -1
+Medieval_Castle_Level02_sprite02
+  rotate: false
+  xy: 370, 1
+  size: 367, 321
+  orig: 367, 321
+  offset: 0, 0
+  index: -1
+Medieval_Castle_Level02_sprite03
+  rotate: false
+  xy: 739, 1
+  size: 367, 321
+  orig: 367, 321
+  offset: 0, 0
+  index: -1
+Medieval_Castle_Level02_sprite04
+  rotate: false
+  xy: 1108, 1
+  size: 367, 321
+  orig: 367, 321
+  offset: 0, 0
+  index: -1
+Medieval_Castle_Level02_sprite05
+  rotate: false
+  xy: 1477, 1
+  size: 367, 321
+  orig: 367, 321
+  offset: 0, 0
+  index: -1
+Medieval_Castle_Level02_sprite06
+  rotate: false
+  xy: 1846, 1
+  size: 367, 321
+  orig: 367, 321
+  offset: 0, 0
+  index: -1
+Medieval_Castle_Level02_sprite07
+  rotate: false
+  xy: 2215, 1
+  size: 367, 321
+  orig: 367, 321
+  offset: 0, 0
+  index: -1
+Medieval_Castle_Level02_sprite08
+  rotate: false
+  xy: 2584, 1
+  size: 367, 321
+  orig: 367, 321
+  offset: 0, 0
+  index: -1
+Medieval_Castle_Level02_sprite09
+  rotate: false
+  xy: 2953, 1
+  size: 367, 321
+  orig: 367, 321
+  offset: 0, 0
+  index: -1
+Medieval_Castle_Level02_sprite10
+  rotate: false
+  xy: 3322, 1
+  size: 367, 321
+  orig: 367, 321
+  offset: 0, 0
+  index: -1

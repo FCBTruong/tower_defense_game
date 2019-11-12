@@ -26,6 +26,9 @@ public class Archer extends CommonCharacter {
         attackingAnimationLeft.setScale(2);
         attackingAnimationLeft.setAnimation(ArcherAssets.attackingLeft);
 
+        attackingAnimationRight.setScale(2);
+        attackingAnimationRight.setAnimation(ArcherAssets.attackingRight);
+
         /** Set Weapon : arrow */
         arrow = new Arrow();
         arrow.setPosition(positionCenter);

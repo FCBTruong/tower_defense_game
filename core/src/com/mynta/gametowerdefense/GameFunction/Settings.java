@@ -1,7 +1,7 @@
 package com.mynta.gametowerdefense.GameFunction;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mynta.gametowerdefense.Assets.CommonAssets;
@@ -116,17 +116,17 @@ public class Settings {
                 positionMusic.x = Constants.camera.position.x + 120;
                 positionMusic.y = Constants.camera.position.y - 150;
 
-                if(CalculationFunction.rectangleDetect(positionSound,300,300,TouchInfo.touchX,TouchInfo.touchY)){
+                if(CalculationFunction.rectangleDetect(positionSound,300,300,TouchInfo.touchX,TouchInfo.touchY)) {
                     SOUND_STATUS = !SOUND_STATUS;
-                    System.out.println("11");
-                    FileHandle file = Gdx.files.internal("Data/Data.txt");
-                //    System.out.println("12");
-                    //file.writeString(SOUND_STATUS + " " + MUSIC_STATUS + " " + LEVEL_CURRENT,false);
+                    Preferences prefs = Gdx.app.getPreferences("TowerDefense"); // to read and write data
+                    prefs.putBoolean("sound", SOUND_STATUS);
+                    prefs.flush();
                 }
                 if(CalculationFunction.rectangleDetect(positionMusic,300,300,TouchInfo.touchX,TouchInfo.touchY)){
+                    Preferences prefs = Gdx.app.getPreferences("TowerDefense"); // to read and write data
                     MUSIC_STATUS = !MUSIC_STATUS;
-                    FileHandle file = new FileHandle("Data/Data.txt");
-                    //file.writeString(SOUND_STATUS + " " + MUSIC_STATUS + " " + LEVEL_CURRENT,false);
+                    prefs.putBoolean("music",MUSIC_STATUS);
+                    prefs.flush();
                 }
             }
             if(GameStage.gameStatus == GameStatus.PLAY_GAME){

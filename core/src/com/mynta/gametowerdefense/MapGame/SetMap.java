@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.mynta.gametowerdefense.utils.Constants.MAP_LEVEL1;
+import static com.mynta.gametowerdefense.utils.Constants.MAP_LEVEL2;
 
 
 /*** Process to set Game map ***/
@@ -282,13 +283,165 @@ public class SetMap {
         Bird b = new Bird();
         MAP_LEVEL1.addBird(b);
 
-       // MAP_LEVEL1.addWaves(wave1);
-       // MAP_LEVEL1.addWaves(wave2);
-     //   MAP_LEVEL1.addWaves(wave3);
-     //   MAP_LEVEL1.addWaves(wave4);
-    //    MAP_LEVEL1.addWaves(wave5);
-     //   MAP_LEVEL1.addWaves(wave6);
-     //   MAP_LEVEL1.addWaves(wave7);
+        MAP_LEVEL1.addWaves(wave1);
+        MAP_LEVEL1.addWaves(wave2);
+        MAP_LEVEL1.addWaves(wave3);
+        MAP_LEVEL1.addWaves(wave4);
+        MAP_LEVEL1.addWaves(wave5);
+        MAP_LEVEL1.addWaves(wave6);
+        MAP_LEVEL1.addWaves(wave7);
         MAP_LEVEL1.addWaves(wave8);
+    }
+
+    public static void MAP_LEVEL2(){
+
+        MAP_LEVEL2 = new MapGame();
+        MAP_LEVEL2.setBackground(2);
+
+        // route that the enemy moves
+        Route route1Left = new Route();
+        Route route1Center = new Route();
+        Route route1Right = new Route();
+
+        Route route2Left = new Route();
+        Route route2Center = new Route();
+        Route route2Right = new Route();
+
+        /** The number of towers that a player able to build. */
+        List<CoOrdinate> listTower = new ArrayList<>();
+
+        /** The number of waves */
+        List<Wave> wavesList = new ArrayList<>();
+
+        /** set route 1 */
+        route1Right.setStartingPoint(new RoutePoint(new CoOrdinate(-200,770), Direction.GO_RIGHT));
+        route1Right.addPoint(new RoutePoint(new CoOrdinate(840,770),Direction.GO_UP));
+        route1Right.addPoint(new RoutePoint(new CoOrdinate(840,1365),Direction.GO_UP));
+        route1Right.addPoint(new RoutePoint(new CoOrdinate(1380,1365),Direction.GO_RIGHT));
+        route1Right.addPoint(new RoutePoint(new CoOrdinate(1380,580),Direction.GO_RIGHT));
+        route1Right.addPoint(new RoutePoint(new CoOrdinate(2930, 580),Direction.GO_RIGHT));
+        route1Right.setRouteStyle(RouteStyle.RIGHT);
+
+        route1Center.setStartingPoint(new RoutePoint(new CoOrdinate(-200,850), Direction.GO_RIGHT));
+        route1Center.addPoint(new RoutePoint(new CoOrdinate(760,850),Direction.GO_UP));
+        route1Center.addPoint(new RoutePoint(new CoOrdinate(760,1430),Direction.GO_UP));
+        route1Center.addPoint(new RoutePoint(new CoOrdinate(1450,1430),Direction.GO_RIGHT));
+        route1Center.addPoint(new RoutePoint(new CoOrdinate(1450,650),Direction.GO_RIGHT));
+        route1Center.addPoint(new RoutePoint(new CoOrdinate(2950, 650),Direction.GO_RIGHT));
+        route1Center.setRouteStyle(RouteStyle.CENTER);
+
+        route1Left.setStartingPoint(new RoutePoint(new CoOrdinate(-200,910), Direction.GO_RIGHT));
+        route1Left.addPoint(new RoutePoint(new CoOrdinate(680,910),Direction.GO_UP));
+        route1Left.addPoint(new RoutePoint(new CoOrdinate(680,1510),Direction.GO_UP));
+        route1Left.addPoint(new RoutePoint(new CoOrdinate(1520,1510),Direction.GO_RIGHT));
+        route1Left.addPoint(new RoutePoint(new CoOrdinate(1520,720),Direction.GO_UP));
+        route1Left.addPoint(new RoutePoint(new CoOrdinate(2950,720),Direction.GO_RIGHT));
+        route1Left.setRouteStyle(RouteStyle.LEFT);
+
+
+
+        /** Set Wave */
+
+
+        Wave wave1 = new Wave();
+        wave1.addWitches(route1Right, 3, 200, 0);
+        wave1.addWitches(route1Left, 3, 300, 0);
+        wave1.addWitches(route1Center, 3, 350, 0);
+
+        wave1.addFlyMonsters(route1Left,10,1000,0);
+        wave1.addFlyMonsters(route1Right,5,1050,0);
+        wave1.addFlyMonsters(route1Center,6,1100,0);
+
+        wave1.addWitches(route1Center,5,2000,0);
+        wave1.addWitches(route1Left,6,2200,0);
+        wave1.addWitches(route1Right,4,2300,0);
+
+        wave1.addFlyMonsters(route1Center,10,3500,0);
+        wave1.addFlyMonsters(route1Left,4,4000,0);
+        wave1.addWitches(route1Right,4,4500,0);
+        wave1.addFlyMonsters(route1Center,10,6000,0);
+
+        Wave wave2 = new Wave();
+        wave2.addFlyMonsters(route1Center,10,200,0);
+        wave2.addWitches(route1Left,4,800,0);
+        wave2.addWitches(route1Right,5,1000,0);
+
+        wave2.addFlyMonsters(route1Center,30,2000,0);
+        wave2.addFlyMonsters(route1Left,30,2200,0);
+        wave2.addWitches(route1Right,10,3000,0);
+        wave2.addWitches(route1Center,8,5000,0);
+        wave2.addWitches(route1Left,8,5200,0);
+        wave2.addFlyMonsters(route1Right,10,6000,0);
+
+        wave2.addBigEnemies(route1Center,10,8000,0);
+        wave2.addFlyMonsters(route1Left,10,8500,0);
+
+        Wave wave3 = new Wave();
+        wave3.addFlyMonsters(route1Center,13,-200,0);
+        wave3.addWitches(route1Left,4,1200,0);
+        wave3.addWitches(route1Right,5,1000,0);
+
+        wave3.addFlyMonsters(route1Center,30,2400,0);
+        wave3.addFlyMonsters(route1Left,30,2200,0);
+        wave3.addWitches(route1Right,10,4000,0);
+        wave3.addWitches(route1Center,8,6000,0);
+        wave3.addWitches(route1Left,10,6200,0);
+        wave3.addFlyMonsters(route1Right,10,7000,0);
+
+        wave3.addBigEnemies(route1Center,10,9000,0);
+        wave3.addFlyMonsters(route1Left,10,9500,0);
+        wave3.addBigEnemies(route1Center,10,12000,0);
+        wave3.addBigEnemies(route1Left,10,12000,0);
+        wave3.addBigEnemies(route1Right,10,12000,0);
+        wave3.addFlyMonsters(route1Center,10,15000,0);
+        wave3.addFlyMonsters(route1Left,10,15000,0);
+        wave3.addFlyMonsters(route1Right,10,15000,0);
+
+
+        // create Towers
+        Tower tower1 = new Tower();
+        tower1.setPosition(new CoOrdinate(100,600));
+        tower1.setPositionOrigin(new CoOrdinate(250,900));
+        Tower tower2 = new Tower();
+        tower2.setPosition(new CoOrdinate(650,600));
+        tower2.setPositionOrigin(new CoOrdinate(800,900));
+        Tower tower3 = new Tower();
+        tower3.setPosition(new CoOrdinate(1400,400));
+        tower3.setPositionOrigin(new CoOrdinate(1570,690));
+        Tower tower4 = new Tower();
+        tower4.setPosition(new CoOrdinate(1400,1620));
+        tower4.setPositionOrigin(new CoOrdinate(1550,1500));
+        Tower tower5 = new Tower();
+        tower5.setPosition(new CoOrdinate(1050,1160));
+        tower5.setPositionOrigin(new CoOrdinate(1200,1520));
+        Tower tower6 = new Tower();
+        tower6.setPosition(new CoOrdinate(2250,400));
+        tower6.setPositionOrigin(new CoOrdinate(2400,690));
+        Tower tower7 = new Tower();
+        tower7.setPosition(new CoOrdinate(2250,820));
+        tower7.setPositionOrigin(new CoOrdinate(2250,700));
+
+
+        /** set towers for MAP */
+        MAP_LEVEL2.addTower(tower1);
+        MAP_LEVEL2.addTower(tower2);
+        MAP_LEVEL2.addTower(tower3);
+        MAP_LEVEL2.addTower(tower4);
+        MAP_LEVEL2.addTower(tower5);
+        MAP_LEVEL2.addTower(tower6);
+        MAP_LEVEL2.addTower(tower7);
+
+        // set A WindMill for map
+
+        MAP_LEVEL2.setCoinNumber(1000);
+        MAP_LEVEL2.setHeartNumber(15);
+
+        // create a bird
+        Bird b = new Bird();
+        MAP_LEVEL2.addBird(b);
+
+        MAP_LEVEL2.addWaves(wave1);
+        MAP_LEVEL2.addWaves(wave2);
+        MAP_LEVEL2.addWaves(wave3);
     }
 }

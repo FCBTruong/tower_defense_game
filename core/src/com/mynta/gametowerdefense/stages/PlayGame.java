@@ -1,6 +1,7 @@
 package com.mynta.gametowerdefense.stages;
 
-import com.badlogic.gdx.files.FileHandle;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -112,6 +113,7 @@ public class PlayGame {
         if(resultPlay == ResultPlay.DEFEAT) {
             waitingTime -= 0.5;
             if(waitingTime > 0) return;
+            if(waitingTime == 0) SoundAssets.loseSound.play();
             if(TouchInfo.touched) {
                 if(SOUND_STATUS) SoundAssets.touchSound.play();
                 GAME_WIDTH = MAIN_GAME_SCREEN_WIDTH;
@@ -125,8 +127,9 @@ public class PlayGame {
         if(resultPlay == WIN){
             if(GameStage.level == LEVEL_CURRENT) {
                 if(LEVEL_CURRENT < LEVEL_MAX) LEVEL_CURRENT++;
-                FileHandle file = new FileHandle("Data/Data.txt");
-                file.writeString(SOUND_STATUS + " " + MUSIC_STATUS + " " + LEVEL_CURRENT,false);
+                Preferences prefs = Gdx.app.getPreferences("TowerDefense"); // to read and write data
+                prefs.putInteger("levelCurrent",LEVEL_CURRENT);
+                prefs.flush();
             }
 
             waitingTime -= 0.5;

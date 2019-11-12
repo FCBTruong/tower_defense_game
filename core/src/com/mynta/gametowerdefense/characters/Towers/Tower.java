@@ -225,6 +225,7 @@ public class Tower {
                else{
                    if(CalculationFunction.circleDetect(positionSellTower,75, TouchInfo.touchX, TouchInfo.touchY)){
                        if(SOUND_STATUS) SoundAssets.touchSound.play();
+                       if(towerType == TowerType.ARMY_INFANTRY) this.deleteEnemy();
                        selected = TowerType.NONE;
                            PlayGame.coinNumber += this.price;
                    }
@@ -266,5 +267,8 @@ public class Tower {
 
     public void setEnemy(CommonCharacter enemy) {
         this.enemy = enemy;
+    }
+    public void deleteEnemy(){
+
     }
 }

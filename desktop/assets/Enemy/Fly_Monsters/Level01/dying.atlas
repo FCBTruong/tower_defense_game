@@ -1,0 +1,180 @@
+
+dying.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Version1_Death2
+  rotate: false
+  xy: 1, 1
+  size: 224, 226
+  orig: 224, 226
+  offset: 0, 0
+  index: 0
+Version1_Death2
+  rotate: false
+  xy: 227, 1
+  size: 224, 226
+  orig: 224, 226
+  offset: 0, 0
+  index: 1
+Version1_Death2
+  rotate: false
+  xy: 453, 1
+  size: 224, 226
+  orig: 224, 226
+  offset: 0, 0
+  index: 2
+Version1_Death2
+  rotate: false
+  xy: 679, 1
+  size: 224, 226
+  orig: 224, 226
+  offset: 0, 0
+  index: 3
+Version1_Death2
+  rotate: false
+  xy: 905, 1
+  size: 224, 226
+  orig: 224, 226
+  offset: 0, 0
+  index: 4
+Version1_Death2
+  rotate: false
+  xy: 1131, 1
+  size: 224, 226
+  orig: 224, 226
+  offset: 0, 0
+  index: 5
+Version1_Death2
+  rotate: false
+  xy: 1357, 1
+  size: 224, 226
+  orig: 224, 226
+  offset: 0, 0
+  index: 6
+Version1_Death2
+  rotate: false
+  xy: 1583, 1
+  size: 224, 226
+  orig: 224, 226
+  offset: 0, 0
+  index: 7
+Version1_Death2
+  rotate: false
+  xy: 1809, 1
+  size: 224, 226
+  orig: 224, 226
+  offset: 0, 0
+  index: 8
+Version1_Death2
+  rotate: false
+  xy: 2035, 1
+  size: 224, 226
+  orig: 224, 226
+  offset: 0, 0
+  index: 9
+Version1_Death2
+  rotate: false
+  xy: 2261, 1
+  size: 224, 226
+  orig: 224, 226
+  offset: 0, 0
+  index: 10
+Version1_Death2
+  rotate: false
+  xy: 2487, 1
+  size: 224, 226
+  orig: 224, 226
+  offset: 0, 0
+  index: 11
+Version1_Death2
+  rotate: false
+  xy: 2713, 1
+  size: 224, 226
+  orig: 224, 226
+  offset: 0, 0
+  index: 12
+Version1_Death2
+  rotate: false
+  xy: 2939, 1
+  size: 224, 226
+  orig: 224, 226
+  offset: 0, 0
+  index: 13
+Version1_Death2
+  rotate: false
+  xy: 3165, 1
+  size: 224, 226
+  orig: 224, 226
+  offset: 0, 0
+  index: 14
+Version1_Death2
+  rotate: false
+  xy: 3391, 1
+  size: 224, 226
+  orig: 224, 226
+  offset: 0, 0
+  index: 15
+Version1_Death2
+  rotate: false
+  xy: 3617, 1
+  size: 224, 226
+  orig: 224, 226
+  offset: 0, 0
+  index: 16
+Version1_Death2
+  rotate: false
+  xy: 3843, 1
+  size: 224, 226
+  orig: 224, 226
+  offset: 0, 0
+  index: 17
+Version1_Death2
+  rotate: false
+  xy: 4069, 1
+  size: 224, 226
+  orig: 224, 226
+  offset: 0, 0
+  index: 18
+Version1_Death2
+  rotate: false
+  xy: 4295, 1
+  size: 224, 226
+  orig: 224, 226
+  offset: 0, 0
+  index: 19
+Version1_Death2
+  rotate: false
+  xy: 4521, 1
+  size: 224, 226
+  orig: 224, 226
+  offset: 0, 0
+  index: 20
+Version1_Death2
+  rotate: false
+  xy: 4747, 1
+  size: 224, 226
+  orig: 224, 226
+  offset: 0, 0
+  index: 21
+Version1_Death2
+  rotate: false
+  xy: 4973, 1
+  size: 224, 226
+  orig: 224, 226
+  offset: 0, 0
+  index: 22
+Version1_Death2
+  rotate: false
+  xy: 5199, 1
+  size: 224, 226
+  orig: 224, 226
+  offset: 0, 0
+  index: 23
+Version1_Death2
+  rotate: false
+  xy: 5425, 1
+  size: 224, 226
+  orig: 224, 226
+  offset: 0, 0
+  index: 24

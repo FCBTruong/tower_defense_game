@@ -99,6 +99,9 @@ public class MapGame {
             case 1:
                 background = new Sprite(MapAssets.textureMapLevel1);
                 break;
+            case 2:
+                background = new Sprite(MapAssets.textureMapLevel2);
+                        break;
         }
     }
 

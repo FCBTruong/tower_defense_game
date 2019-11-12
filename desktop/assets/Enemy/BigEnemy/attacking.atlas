@@ -1,0 +1,54 @@
+
+attacking.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+RUN
+  rotate: false
+  xy: 1, 1
+  size: 605, 412
+  orig: 605, 412
+  offset: 0, 0
+  index: 0
+RUN
+  rotate: false
+  xy: 608, 1
+  size: 605, 412
+  orig: 605, 412
+  offset: 0, 0
+  index: 1
+RUN
+  rotate: false
+  xy: 1215, 1
+  size: 605, 412
+  orig: 605, 412
+  offset: 0, 0
+  index: 2
+RUN
+  rotate: false
+  xy: 1822, 1
+  size: 605, 412
+  orig: 605, 412
+  offset: 0, 0
+  index: 3
+RUN
+  rotate: false
+  xy: 2429, 1
+  size: 605, 412
+  orig: 605, 412
+  offset: 0, 0
+  index: 4
+RUN
+  rotate: false
+  xy: 3036, 1
+  size: 605, 412
+  orig: 605, 412
+  offset: 0, 0
+  index: 5
+RUN
+  rotate: false
+  xy: 3643, 1
+  size: 605, 412
+  orig: 605, 412
+  offset: 0, 0
+  index: 6

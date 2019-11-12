@@ -9,12 +9,14 @@ public class SoundAssets extends Assets{
     public static Sound arrowSound;
     public static Music music;
     public static Sound swordSound;
+    public static Sound loseSound;
 
     public static void LoadToProject() {
       touchSound = MyGame.manager.get("Sound/touchSound.mp3");
       arrowSound = MyGame.manager.get("Sound/arrowSound.wav");
       music = MyGame.manager.get("Sound/music.mp3");
       swordSound = MyGame.manager.get("Sound/swordSound.wav");
+      loseSound = MyGame.manager.get("Sound/lose.mp3");
     }
 
     public static void ManagerLoad() {
@@ -22,6 +24,7 @@ public class SoundAssets extends Assets{
       MyGame.manager.load("Sound/music.mp3", Music.class);
       MyGame.manager.load("Sound/arrowSound.wav",Sound.class);
       MyGame.manager.load("Sound/swordSound.wav",Sound.class);
+      MyGame.manager.load("Sound/lose.mp3",Sound.class);
     }
 
     public static void Clean(){
@@ -29,5 +32,6 @@ public class SoundAssets extends Assets{
         arrowSound.dispose();
         music.dispose();
         swordSound.dispose();
+        loseSound.dispose();
     }
 }

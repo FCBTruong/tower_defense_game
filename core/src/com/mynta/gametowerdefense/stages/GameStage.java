@@ -50,9 +50,10 @@ public class GameStage extends Stage implements InputProcessor {
         switch (gameStatus) {
             case MAIN_GAME_SCREEN:
                 mainGameScreen.draw(batch);
-                for(int i = 1; i <= LEVEL_CURRENT; i ++){
-                    Constants.chooseLevels[i].show(batch);
+                for(int i = 1; i <= LEVEL_CURRENT - 1; i ++){
+                    Constants.chooseLevels[i].showSecond(batch);
                 }
+                chooseLevels[LEVEL_CURRENT].showFirst(batch);
                 settings.showIcon(batch);
                 if(TouchInfo.touched || TouchInfo.back) settings.Touch();
                 if(settings.close) settings.show(batch);
@@ -67,6 +68,11 @@ public class GameStage extends Stage implements InputProcessor {
                                     level = 1;
                                     SetMap.MAP_LEVEL1();
                                     playGame = new PlayGame(MAP_LEVEL1);
+                                    break;
+                                case 2:
+                                    level = 2;
+                                    SetMap.MAP_LEVEL2();
+                                    playGame = new PlayGame(MAP_LEVEL2);
                                     break;
                             }
                             gameStatus = GameStatus.PLAY_GAME;

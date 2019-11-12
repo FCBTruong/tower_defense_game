@@ -140,4 +140,10 @@ public class ArmyTower extends Tower {
         if(army3.radar(enemy)) return false;
         return false;
     }
+
+    public void deleteEnemy(){
+        army1.deleteEnemy();
+        army2.deleteEnemy();
+        army3.deleteEnemy();
+    }
 }

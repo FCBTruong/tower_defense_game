@@ -158,5 +158,12 @@ public class ArmyInfantry extends CommonCharacter {
             }
         }
     }
+
+    public void deleteEnemy(){
+        enemy.characterStatus = CharacterStatus.RUN;
+        enemy.setSpeed(2);
+        enemy.status = false;
+        enemy = new CommonCharacter();
+    }
 }
 

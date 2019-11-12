@@ -12,6 +12,7 @@ import com.mynta.gametowerdefense.stages.PlayGame;
 import com.mynta.gametowerdefense.utils.AnimationAct;
 import com.mynta.gametowerdefense.utils.CalculationFunction;
 import com.mynta.gametowerdefense.utils.CoOrdinate;
+import com.mynta.gametowerdefense.utils.Constants;
 
 public  class CommonCharacter extends Actor {
     /** Character attributes */
@@ -46,7 +47,7 @@ public  class CommonCharacter extends Actor {
     /** position and move */
     public CoOrdinate positionCurrent;
     public CoOrdinate positionCenter; // center of Character
-    protected Direction direction;    // direction of movement
+    public Direction direction;    // direction of movement
     protected Route route;            // the way to move
     private int index;                // index of point in route;
 
@@ -229,7 +230,7 @@ public  class CommonCharacter extends Actor {
         if(coolDownTime == 0) {
             coolDownTime = 30;
             enemy.bloodCurrent -= damage;
-            if(characterType == CharacterType.ARMY_INFANTRY) SoundAssets.swordSound.play();
+            if(characterType == CharacterType.ARMY_INFANTRY) if(Constants.SOUND_STATUS) SoundAssets.swordSound.play();
             if(enemy.bloodCurrent < 0) coolDownTime = 0.5f;
             attackingAnimationRight.setElapsedTime(0);
             attackingAnimationLeft.setElapsedTime(0);

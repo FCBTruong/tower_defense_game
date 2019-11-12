@@ -2,7 +2,6 @@ package com.mynta.gametowerdefense;
 
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.input.GestureDetector;
 import com.badlogic.gdx.math.Vector2;
@@ -10,9 +9,6 @@ import com.badlogic.gdx.math.Vector3;
 import com.mynta.gametowerdefense.screens.LoadingScreen;
 import com.mynta.gametowerdefense.utils.Constants;
 import com.mynta.gametowerdefense.utils.TouchInfo;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static com.mynta.gametowerdefense.utils.Constants.*;
 
@@ -22,30 +18,34 @@ public class MyGame extends Game implements ApplicationListener, GestureDetector
     @Override
     public void create(){
         //** read Data from file */
-        Preferences prefs = Gdx.app.getPreferences("myprefs");
-        //If the preference key is empty, create it by putting a value into it
-        if(!prefs.contains("key")) prefs.putInteger("key", 1337);
+        Preferences prefs = Gdx.app.getPreferences("TowerDefense");
 
-        //Get value from a preference key "key" (must not be empty)
-        int val = prefs.getInteger("key");
+        //If the preference key is empty, create it by putting a value into it
+        if(!prefs.contains("sound")) {
+            prefs.putBoolean("sound", true);
+            SOUND_STATUS = true;
+        }
+
+        if(!prefs.contains("music")) {
+            prefs.putBoolean("music", true);
+            MUSIC_STATUS = true;
+        }
+        if(!prefs.contains("levelCurrent")) {
+            prefs.putInteger("levelCurrent", 1);
+            LEVEL_CURRENT = 1;
+        }
+
+        //Get value from a preference key  (must not be empty)
+        if(prefs.getBoolean("sound")) SOUND_STATUS = true;
+        else SOUND_STATUS = false;
+        if(prefs.getBoolean("music")) MUSIC_STATUS = true;
+        else MUSIC_STATUS = false;
+        LEVEL_CURRENT = prefs.getInteger("levelCurrent");
 
        //Do something with your value and put it back to the preference
-        prefs.putInteger("key", val);
 
         //This will finally save the changes to storage
         prefs.flush();
-        FileHandle file = Gdx.files.internal("Data/Data.txt");
-        String text = file.readString();
-        String wordsArray[] = text.split(" ");
-        List<String> words = new ArrayList<>();
-        for(String word : wordsArray) {
-            words.add(word);
-        }
-        if(words.get(0).equals("false")) SOUND_STATUS = false;
-        else SOUND_STATUS = true;
-        if(words.get(1).equals("false")) MUSIC_STATUS = false;
-        else MUSIC_STATUS = true;
-        LEVEL_CURRENT = Integer.valueOf(words.get(2));
 
         Gdx.input.setInputProcessor(new GestureDetector(this));
         Gdx.input.setCatchBackKey(true);

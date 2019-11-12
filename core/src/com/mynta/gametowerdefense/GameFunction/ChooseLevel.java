@@ -14,29 +14,36 @@ public class ChooseLevel {
     private CoOrdinate position;
 
     public ChooseLevel(int level){
-        status = false;
         switch (level) {
             case 1:
                 showLevel = new Sprite(FlagsLevelAssets.textureLevel1);
                 showLevel.setPosition(1000,1000);
+                showLevelWin = new Sprite(FlagsLevelAssets.textureWinLevel1);
+                showLevelWin.setPosition(1000,1000);
                 break;
+            case 2:
+                showLevel = new Sprite(FlagsLevelAssets.textureLevel2);
+                showLevel.setPosition(1000,1000);
+                showLevelWin = new Sprite(FlagsLevelAssets.textureWinLevel2);
+                showLevelWin.setPosition(1000,1000);
+                break;
+
         }
         position = new CoOrdinate();
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
     }
 
     public void setPosition(CoOrdinate position) {
         this.position = position;
         showLevel.setPosition(position.x,position.y);
+        showLevelWin.setPosition(position.x,position.y);
     }
 
-    public void show(SpriteBatch batch){
-        if(!status){
+    public void showFirst(SpriteBatch batch){ // finished
             showLevel.draw(batch);
-        }
+    }
+
+    public void showSecond(SpriteBatch batch){
+        showLevelWin.draw(batch);
     }
 
     public boolean Touch(){
