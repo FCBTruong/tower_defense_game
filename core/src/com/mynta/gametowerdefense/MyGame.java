@@ -35,6 +35,9 @@ public class MyGame extends Game implements ApplicationListener, GestureDetector
             LEVEL_CURRENT = 1;
         }
 
+        //This will finally save the changes to storage
+        prefs.flush();
+
         //Get value from a preference key  (must not be empty)
         if(prefs.getBoolean("sound")) SOUND_STATUS = true;
         else SOUND_STATUS = false;
@@ -43,9 +46,6 @@ public class MyGame extends Game implements ApplicationListener, GestureDetector
         LEVEL_CURRENT = prefs.getInteger("levelCurrent");
 
        //Do something with your value and put it back to the preference
-
-        //This will finally save the changes to storage
-        prefs.flush();
 
         Gdx.input.setInputProcessor(new GestureDetector(this));
         Gdx.input.setCatchBackKey(true);

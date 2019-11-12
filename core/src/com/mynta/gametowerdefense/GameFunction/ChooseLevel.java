@@ -42,9 +42,7 @@ public class ChooseLevel {
             showLevel.draw(batch);
     }
 
-    public void showSecond(SpriteBatch batch){
-        showLevelWin.draw(batch);
-    }
+    public void showSecond(SpriteBatch batch){ showLevelWin.draw(batch); }
 
     public boolean Touch(){
         if(CalculationFunction.circleDetect(new CoOrdinate(position.x + 75, position.y + 75),75, TouchInfo.touchX, TouchInfo.touchY))
