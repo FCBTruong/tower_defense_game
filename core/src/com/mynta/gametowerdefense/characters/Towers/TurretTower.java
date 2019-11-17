@@ -2,6 +2,7 @@ package com.mynta.gametowerdefense.characters.Towers;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mynta.gametowerdefense.Assets.CommonAssets;
 import com.mynta.gametowerdefense.Assets.TowerAssets;
 import com.mynta.gametowerdefense.Weapons.TurretBullet;
 import com.mynta.gametowerdefense.enums.CharacterStatus;
@@ -54,12 +55,13 @@ public class TurretTower extends Tower {
                     placeTower = new Sprite(TowerAssets.textureTurretTowerLevel3);
                     bullet = new TurretBullet(3);
                     bullet.setPosition(new CoOrdinate(positionCenter.x - 10,positionCenter.y + 80));
-                    damage += 5;
+                    damage += 7;
                     price = price + priceUp;
                     PlayGame.coinNumber -= price;
                     placeTower.setPosition(positionCenter.x - 75, positionCenter.y - 70);
                     break;
                 case 4:
+                    upGradeTower = new Sprite(CommonAssets.textureCanNotUpGrade);
                     placeTower = new Sprite(TowerAssets.textureTurretTowerLevel4);
                     placeTower.setPosition(positionCenter.x - 75, positionCenter.y - 70);
                     bullet = new TurretBullet(4);

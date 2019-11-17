@@ -2,14 +2,21 @@ package com.mynta.gametowerdefense.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.mynta.gametowerdefense.Assets.CommonAssets;
 import com.mynta.gametowerdefense.MyGame;
 import com.mynta.gametowerdefense.stages.GameStage;
+import com.mynta.gametowerdefense.utils.TouchInfo;
 
 public class GameScreen extends AbstractScreen {
     private GameStage stage;
 
     public GameScreen(MyGame game){
         super(game);
+
+        // set Touch Info
+        TouchInfo.spriteTouchFalse = new Sprite(CommonAssets.textureTouchFalse);
+        TouchInfo.spriteTouchMoveArmyTower = new Sprite(CommonAssets.textureTouchMoveArmyTower);
         stage = new GameStage();
     }
 

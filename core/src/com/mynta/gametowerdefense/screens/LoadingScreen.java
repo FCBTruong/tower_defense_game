@@ -20,6 +20,7 @@ public class LoadingScreen extends AbstractScreen{
     private Texture textureLoadingScreen;
     private Texture textureLoadingBar;
     private Texture textureIntroduce;
+    private Texture textureTouch;
 
     private Sprite loadingScreen;
     private Sprite loadingBar;
@@ -63,6 +64,8 @@ public class LoadingScreen extends AbstractScreen{
             managerOfLoading.load("Common/loadingScreen.png",Texture.class);
             managerOfLoading.load("Common/Fonts/percent.fnt", BitmapFont.class);
             managerOfLoading.load("Sound/touchLoadingSound.mp3", Sound.class);
+            // Touch display
+            managerOfLoading.load("Common/touch.png",Texture.class);
             if(!managerOfLoading.update()) return;
         }
     }
@@ -87,6 +90,10 @@ public class LoadingScreen extends AbstractScreen{
                     fontLoading = managerOfLoading.get("Common/Fonts/percent.fnt");
 
                     soundLoading = managerOfLoading.get("Sound/touchLoadingSound.mp3");
+
+                    textureTouch = managerOfLoading.get("Common/touch.png");
+                    textureTouch.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+                    TouchInfo.spriteTouch = new Sprite(textureTouch);
 
                     loadingStatus = LoadingStatus.LOAD_GAME_ASSETS;
                     this.show();

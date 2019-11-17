@@ -15,5 +15,6 @@ public class CleanAssets {
         ApprenticeMageAssets.Clean();
         SoundAssets.Clean();
         ArmyInfantryAssets.Clean();
+        AuxiliaryAssets.Clean();
     }
 }

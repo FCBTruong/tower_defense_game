@@ -1,6 +1,7 @@
 package com.mynta.gametowerdefense.MapGame;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mynta.gametowerdefense.Auxiliary.Lighting;
 import com.mynta.gametowerdefense.Scenery.Route;
 import com.mynta.gametowerdefense.characters.Hostile.BigEnemy;
 import com.mynta.gametowerdefense.characters.Hostile.FlyMonster;
@@ -8,6 +9,7 @@ import com.mynta.gametowerdefense.characters.Hostile.Witch;
 import com.mynta.gametowerdefense.characters.Towers.Tower;
 import com.mynta.gametowerdefense.characters.Towers.TowerType;
 import com.mynta.gametowerdefense.enums.CharacterStatus;
+import com.mynta.gametowerdefense.utils.CalculationFunction;
 import com.mynta.gametowerdefense.utils.CoOrdinate;
 
 import java.util.ArrayList;
@@ -123,6 +125,24 @@ public class Wave {
         }
     }
 
+    public void lightingAttack(Lighting lighting){
+        for(int i = 0; i < flyMonsterNumber; i ++)
+        {
+           if(CalculationFunction.circleDetect(lighting.positionAttack, lighting.radius,flyMonsterList.get(i).positionCenter)) {
+               flyMonsterList.get(i).bloodCurrent -= lighting.damage;
+           }
+        }
+        for(int i = 0; i < witchNumber; i ++)
+        {
+            if(CalculationFunction.circleDetect(lighting.positionAttack, lighting.radius,witchList.get(i).positionCenter))
+                witchList.get(i).bloodCurrent -= lighting.damage;
+        }
+        for(int i = 0; i < bigEnemyNumber; i ++){
+            if(CalculationFunction.circleDetect(lighting.positionAttack, lighting.radius,bigEnemyList.get(i).positionCenter))
+                bigEnemyList.get(i).bloodCurrent -= lighting.damage;
+        }
+    }
+
     public void show(SpriteBatch batch) {
         for (int i = 0; i < witchNumber; i++){
             witchList.get(i).show(batch);
@@ -148,7 +168,6 @@ public class Wave {
             if(bigEnemyList.get(i).getStatus() != CharacterStatus.NONE && bigEnemyList.get(i).getStatus() != CharacterStatus.DEAD)
                 return  true;
         }
-        System.out.println("aaa");
         return false;
     }
 }

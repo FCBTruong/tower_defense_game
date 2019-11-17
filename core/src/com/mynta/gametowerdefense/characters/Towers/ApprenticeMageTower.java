@@ -2,6 +2,7 @@ package com.mynta.gametowerdefense.characters.Towers;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mynta.gametowerdefense.Assets.CommonAssets;
 import com.mynta.gametowerdefense.Assets.TowerAssets;
 import com.mynta.gametowerdefense.Weapons.MagicBullet;
 import com.mynta.gametowerdefense.characters.Army.ApprenticeMage;
@@ -42,6 +43,7 @@ public class ApprenticeMageTower extends Tower {
                     placeTower.setPosition(positionCenter.x - placeTower.getWidth() / 2,positionCenter.y - placeTower.getHeight()/2 + 10);
                     break;
                 case 3:
+                    upGradeTower = new Sprite(CommonAssets.textureCanNotUpGrade);
                     placeTower = new Sprite(TowerAssets.textureApprenticeMageTowerLevel3);
                     apprenticeMage.magicBullet = new MagicBullet(3);
                     apprenticeMage.magicBullet.setPosition(new CoOrdinate(apprenticeMage.positionCenter.x,apprenticeMage.positionCenter.y));

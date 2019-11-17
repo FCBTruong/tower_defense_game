@@ -1,8 +1,10 @@
 package com.mynta.gametowerdefense.stages;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.mynta.gametowerdefense.Assets.CleanAssets;
 import com.mynta.gametowerdefense.Assets.CommonAssets;
@@ -10,6 +12,7 @@ import com.mynta.gametowerdefense.Assets.SoundAssets;
 import com.mynta.gametowerdefense.GameFunction.Settings;
 import com.mynta.gametowerdefense.MapGame.SetMap;
 import com.mynta.gametowerdefense.MyGame;
+import com.mynta.gametowerdefense.utils.AnimationAct;
 import com.mynta.gametowerdefense.utils.Constants;
 import com.mynta.gametowerdefense.utils.TouchInfo;
 
@@ -30,6 +33,7 @@ public class GameStage extends Stage implements InputProcessor {
     private Sprite mainGameScreen;
     public static int level;
 
+    public AnimationAct g;
     public GameStage(){
         Constants.loadData();
         level = 0;
@@ -37,6 +41,7 @@ public class GameStage extends Stage implements InputProcessor {
         batch = new SpriteBatch();
         gameStatus = GameStatus.MAIN_GAME_SCREEN;
         mainGameScreen = new Sprite(CommonAssets.textureMainGameScreen);
+        TextureAtlas t = new TextureAtlas(Gdx.files.internal("Common/lighting.atlas"));
     }
 
 
@@ -44,6 +49,9 @@ public class GameStage extends Stage implements InputProcessor {
     public void act(float delta){
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
+
+        if(TouchInfo.touched) TouchInfo.typeTouch = 0; // set Touch default
+
         if(MUSIC_STATUS) SoundAssets.music.play();
         else SoundAssets.music.stop();
 
@@ -94,6 +102,7 @@ public class GameStage extends Stage implements InputProcessor {
                 else settings.show(batch);
                 break;
         }
+        TouchInfo.show(batch);
         batch.end();
     }
 

@@ -2,6 +2,7 @@ package com.mynta.gametowerdefense.characters.Towers;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mynta.gametowerdefense.Assets.CommonAssets;
 import com.mynta.gametowerdefense.Assets.SoundAssets;
 import com.mynta.gametowerdefense.Assets.TowerAssets;
 import com.mynta.gametowerdefense.Weapons.Arrow;
@@ -42,7 +43,7 @@ public class ArcherTower extends Tower {
             switch (levelCurrent){
                 case 2:
                     placeTower = new Sprite(TowerAssets.textureArcherTowerLevel2);
-                    damage += 10;
+                    damage += 15;
                     price = price + priceUp;
                     PlayGame.coinNumber -= price;
                     placeTower.setPosition(positionCenter.x - placeTower.getWidth() / 2,positionCenter.y - placeTower.getHeight()/2 + 10);
@@ -57,6 +58,7 @@ public class ArcherTower extends Tower {
                     placeTower.setPosition(positionCenter.x - placeTower.getWidth() / 2,positionCenter.y - placeTower.getHeight()/2 + 10);
                     break;
                 case 4:
+                    upGradeTower = new Sprite(CommonAssets.textureCanNotUpGrade);
                     placeTower = new Sprite(TowerAssets.textureArcherTowerLevel4);
                     placeTower.setPosition(positionCenter.x - placeTower.getWidth() / 2,positionCenter.y - placeTower.getHeight()/2 + 10);
                     archer.arrow = new Arrow(4);
@@ -71,7 +73,7 @@ public class ArcherTower extends Tower {
 
     public void setPosition(CoOrdinate position){
         super.setPosition(position);
-        archer.setPosition(new CoOrdinate(position.x + 60,position.y + 130));
+        archer.setPosition(new CoOrdinate(position.x + 55,position.y + 130));
         placeTower.setPosition(positionCenter.x - placeTower.getWidth() / 2,positionCenter.y - placeTower.getHeight()/2 + 10);
     }
 

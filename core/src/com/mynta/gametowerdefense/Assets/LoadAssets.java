@@ -17,6 +17,7 @@ public class LoadAssets {
         ApprenticeMageAssets.LoadToProject();
         SoundAssets.LoadToProject();
         ArmyInfantryAssets.LoadToProject();
+        AuxiliaryAssets.LoadToProject();
         return true;
     }
 
@@ -35,5 +36,6 @@ public class LoadAssets {
         ApprenticeMageAssets.ManagerLoad();
         SoundAssets.ManagerLoad();
         ArmyInfantryAssets.ManagerLoad();
+        AuxiliaryAssets.ManagerLoad();
     }
 }

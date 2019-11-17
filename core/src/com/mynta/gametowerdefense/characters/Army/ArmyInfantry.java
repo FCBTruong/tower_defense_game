@@ -53,6 +53,8 @@ public class ArmyInfantry extends CommonCharacter {
         direction = Direction.GO_LEFT;
         radius = 200;
         timeRevive = 200;
+
+        enemy = new CommonCharacter();
     }
 
     public void setPositionOrigin(CoOrdinate positionOrigin) {
@@ -105,6 +107,10 @@ public class ArmyInfantry extends CommonCharacter {
         if(characterStatus == CharacterStatus.DEAD || characterStatus == CharacterStatus.NONE) return;
         if(!status) {
             if(!CalculationFunction.move(positionCenter,positionOrigin,speed)) {
+                enemy.characterStatus = CharacterStatus.RUN;
+                enemy.setSpeed(2);
+                enemy.status = false;
+                enemy = new CommonCharacter();
                 if (positionOrigin.x < positionCenter.x) {
                     direction = Direction.GO_LEFT;
                 } else direction = Direction.GO_RIGHT;

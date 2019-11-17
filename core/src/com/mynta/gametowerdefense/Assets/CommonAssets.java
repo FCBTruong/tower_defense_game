@@ -19,12 +19,16 @@ public class CommonAssets {
     public static Texture textureSpriteWave;
     public static Texture textureShowCoinNumber;
     public static Texture textureFrameRange;
+
     public static Texture textureUpGrade;
+    public static Texture textureCanNotUpGrade;
+
     public static Texture texturePause;
     public static Texture textureChooseArcherTower;
     public static Texture textureChooseArmyTower;
     public static Texture textureChooseApprenticeMageTower;
     public static Texture textureChooseTurretTower;
+    public static Texture textureChooseMove;
 
     public static Texture textureSettings;
     public static Texture textureSettingIcon;
@@ -43,6 +47,12 @@ public class CommonAssets {
     public static Texture textureX; // off Sound or Music
 
     public static Texture textureStartWave;
+    public static Texture textureFrameArmy;
+
+    // Touch
+
+    public static Texture textureTouchFalse;
+    public static Texture textureTouchMoveArmyTower;
 
     /**
      * Font Assets
@@ -92,20 +102,28 @@ public class CommonAssets {
         // loading screen
         MyGame.manager.load("Common/loadingScreen.png",Texture.class);
 
+        // Touch
+        MyGame.manager.load("Common/touchFalse.png",Texture.class);
+        MyGame.manager.load("Common/touchMoveArmyTower.png",Texture.class);
+
         /* font assets */
         MyGame.manager.load("Common/Fonts/font.fnt",BitmapFont.class);
 
         MyGame.manager.load("Common/Fonts/priceFont.fnt",BitmapFont.class);
 
         MyGame.manager.load("Common/upGrade.png",Texture.class);
+        MyGame.manager.load("Common/canNotUpGrade.png",Texture.class);
 
         MyGame.manager.load("Common/pause.png",Texture.class);
 
         MyGame.manager.load("Common/ChooseArmyTower.png",Texture.class);
+        MyGame.manager.load("Common/frameRangeArmy.png",Texture.class);
 
         MyGame.manager.load("Common/ChooseApprenticeMage.png",Texture.class);
 
         MyGame.manager.load("Common/ChooseTurretTower.png",Texture.class);
+
+        MyGame.manager.load("Common/move.png",Texture.class);
 
         MyGame.manager.load("Common/defeat.png",Texture.class);
         MyGame.manager.load("Common/victory.png",Texture.class);
@@ -155,9 +173,14 @@ public class CommonAssets {
 
         textureUpGrade = MyGame.manager.get("Common/upGrade.png");
         textureUpGrade.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        textureCanNotUpGrade = MyGame.manager.get("Common/canNotUpGrade.png");
+        textureCanNotUpGrade.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 
         texturePause = MyGame.manager.get("Common/pause.png");
         texturePause.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+
+        textureFrameArmy = MyGame.manager.get("Common/frameRangeArmy.png");
+        textureFrameArmy.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 
 
         /** Choose Tower */
@@ -166,6 +189,9 @@ public class CommonAssets {
 
         textureChooseArmyTower = MyGame.manager.get("Common/ChooseArmyTower.png");
         textureChooseArmyTower.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+
+        textureChooseMove = MyGame.manager.get("Common/move.png");
+        textureChooseMove.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
 
         textureChooseApprenticeMageTower = MyGame.manager.get("Common/ChooseApprenticeMage.png");
         textureChooseApprenticeMageTower.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
@@ -203,6 +229,11 @@ public class CommonAssets {
         textureX.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         textureStartWave = MyGame.manager.get("Common/start.png");
         textureStartWave.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+
+        textureTouchFalse = MyGame.manager.get("Common/touchFalse.png");
+        textureTouchFalse.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        textureTouchMoveArmyTower = MyGame.manager.get("Common/touchMoveArmyTower.png");
+        textureTouchMoveArmyTower.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
     }
 
     public static void Clean(){
@@ -217,15 +248,18 @@ public class CommonAssets {
         textureSpriteWave.dispose();
         textureShowCoinNumber.dispose();
         textureFrameRange.dispose();
+        textureFrameArmy.dispose();
         defaultNormalFont.dispose();
         priceFont.dispose();
         textureUpGrade.dispose();
+        textureCanNotUpGrade.dispose();
         texturePause.dispose();
 
         textureChooseArcherTower.dispose();
         textureChooseArmyTower.dispose();
         textureChooseApprenticeMageTower.dispose();
         textureChooseTurretTower.dispose();
+        textureChooseMove.dispose();
 
         textureSettings.dispose();
         textureSettingIcon.dispose();
@@ -242,5 +276,8 @@ public class CommonAssets {
         textureX.dispose();
         textureBloodArmy.dispose();
         textureStartWave.dispose();
+
+        textureTouchFalse.dispose();
+        textureTouchMoveArmyTower.dispose();
     }
 }

@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mynta.gametowerdefense.Assets.MapAssets;
+import com.mynta.gametowerdefense.Auxiliary.Lighting;
 import com.mynta.gametowerdefense.Scenery.Bird;
 import com.mynta.gametowerdefense.Scenery.Flag;
 import com.mynta.gametowerdefense.Scenery.Route;
@@ -35,6 +36,9 @@ public class MapGame {
     public int coinNumber;
     public int heartNumber;
 
+    //auxiliary */
+    public Lighting lighting;
+
     // character, tower...;
     public MapGame(){
         towerNumber = 0;
@@ -52,6 +56,8 @@ public class MapGame {
 
         coinNumber = 600;
         heartNumber = 15;
+
+        lighting = new Lighting();
     }
 
     public void addTower(Tower tower){
@@ -119,6 +125,10 @@ public class MapGame {
 
         for(int i = 0; i < windMillList.size(); i ++){
             windMillList.get(i).show(batch);
+        }
+
+        for(int i = 0; i < towerNumber; i ++){
+            towerList[i].showTower(batch);
         }
 
         for(int i = 0; i < towerNumber; i ++){

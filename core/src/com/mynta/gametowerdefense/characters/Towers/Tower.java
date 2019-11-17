@@ -45,12 +45,12 @@ public class Tower {
     private Sprite sellTower;
     CoOrdinate positionSellTower;
 
-    private Sprite frameRange; /* Of tower */
+    protected Sprite frameRange; /* Of tower */
     public float timeOff;
     protected BitmapFont priceFont;
 
     protected Sprite upGradeTower;
-    private CoOrdinate positionUpGrade;
+    protected CoOrdinate positionUpGrade;
     private BitmapFont priceUpGradeFont;
 
     protected int levelCurrent;
@@ -112,6 +112,8 @@ public class Tower {
 
         priceUpGradeFont = CommonAssets.priceFont;
         priceUpGradeFont.setColor(Color.YELLOW);
+
+        enemy = new CommonCharacter();
     }
 
     public void setPosition(CoOrdinate position) {
@@ -150,8 +152,12 @@ public class Tower {
         return positionOrigin;
     }
 
-    public void showFirst(SpriteBatch batch){
+    public void showTower(SpriteBatch batch){
         placeTower.draw(batch);
+    }
+
+    public void showFirst(SpriteBatch batch){
+        // to do
     }
 
     public void showSecond(SpriteBatch batch){

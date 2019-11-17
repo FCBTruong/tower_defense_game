@@ -3,7 +3,7 @@ package com.mynta.gametowerdefense.utils;
 public class CalculationFunction {
     public static boolean circleDetect(CoOrdinate center,float radius, CoOrdinate object){
         float distance = (object.x - center.x) * (object.x - center.x) + (object.y - center.y) * (object.y -center.y);
-        if(distance <= radius) return  true;
+        if(distance <= radius * radius) return  true;
         return false;
     }
 

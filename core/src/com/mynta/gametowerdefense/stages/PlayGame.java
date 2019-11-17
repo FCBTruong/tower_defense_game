@@ -159,7 +159,7 @@ public class PlayGame {
             if(waveShiftTime <= 0) {
                 indexWaveCurrent++;
                 if(indexWaveCurrent == waveNumber) {
-                    System.out.println("aaa");
+
                     resultPlay = WIN;
                     indexWaveCurrent --;
                     return;
@@ -245,6 +245,10 @@ public class PlayGame {
             } else
                 mapGame.waveList.get(indexWaveCurrent).radar(mapGame.towerList[i]);
         }
+        if(mapGame.lighting.attack){
+            mapGame.waveList.get(indexWaveCurrent).lightingAttack(mapGame.lighting);
+            mapGame.lighting.attack = false;
+        }
     }
 
     public void show(SpriteBatch batch) {
@@ -316,6 +320,10 @@ public class PlayGame {
             spriteStartWave.setPosition((150 - sizeStartWave)/2,420 + (150 - sizeStartWave)/2);
             spriteStartWave.draw(batch);
         }
+
+        // show auxiliary /
+        mapGame.lighting.touch();
+        mapGame.lighting.show(batch);
     }
 
     public void dispose(){
