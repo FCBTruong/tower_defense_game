@@ -22,7 +22,7 @@ public class Lighting {
     public float damage;
     public float radius;
     private float timeCoolDown;
-    private final float timeCoolDownMax = 20;
+    private final float timeCoolDownMax = 24;
     private float timeAttack;
 
     public Lighting(){
@@ -43,7 +43,7 @@ public class Lighting {
         positionShowLight = new CoOrdinate();
         timeCoolDown = 0;
         timeAttack = 0;
-        damage = 50;
+        damage = 100;
         radius = 250;
     }
 

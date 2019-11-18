@@ -1,6 +1,7 @@
 package com.mynta.gametowerdefense.MapGame;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mynta.gametowerdefense.Auxiliary.Fire;
 import com.mynta.gametowerdefense.Auxiliary.Lighting;
 import com.mynta.gametowerdefense.Scenery.Route;
 import com.mynta.gametowerdefense.characters.Hostile.BigEnemy;
@@ -140,6 +141,24 @@ public class Wave {
         for(int i = 0; i < bigEnemyNumber; i ++){
             if(CalculationFunction.circleDetect(lighting.positionAttack, lighting.radius,bigEnemyList.get(i).positionCenter))
                 bigEnemyList.get(i).bloodCurrent -= lighting.damage;
+        }
+    }
+
+    public void fireAttack(Fire fire){
+        for(int i = 0; i < flyMonsterNumber; i ++)
+        {
+            if(CalculationFunction.circleDetect(fire.positionAttack, fire.radius,flyMonsterList.get(i).positionCenter)) {
+                flyMonsterList.get(i).bloodCurrent -= fire.damage;
+            }
+        }
+        for(int i = 0; i < witchNumber; i ++)
+        {
+            if(CalculationFunction.circleDetect(fire.positionAttack, fire.radius,witchList.get(i).positionCenter))
+                witchList.get(i).bloodCurrent -= fire.damage;
+        }
+        for(int i = 0; i < bigEnemyNumber; i ++){
+            if(CalculationFunction.circleDetect(fire.positionAttack, fire.radius,bigEnemyList.get(i).positionCenter))
+                bigEnemyList.get(i).bloodCurrent -= fire.damage;
         }
     }
 

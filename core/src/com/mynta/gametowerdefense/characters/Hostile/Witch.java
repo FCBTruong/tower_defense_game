@@ -14,7 +14,7 @@ public class Witch extends CommonCharacter {
         runningAnimationRight.setAnimation(WitchAssets.textureAtlasRunning);
         dyingAnimation.setAnimation(WitchAssets.textureAtlasDying);
         attackingAnimationRight.setAnimation(WitchAssets.textureAtlasAttacking);
-        setBlood(100);
+        setBlood(120);
         speed = 2;
         width = 120;
         height = 120;

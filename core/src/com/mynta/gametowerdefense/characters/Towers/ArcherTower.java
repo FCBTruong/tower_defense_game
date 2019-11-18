@@ -34,7 +34,7 @@ public class ArcherTower extends Tower {
         levelCurrent = 1;
         levelMax = 4;
         towerType = TowerType.ARCHER;
-        damage = 10;
+        damage = 15;
     }
 
     public void upGrade(){
@@ -43,7 +43,7 @@ public class ArcherTower extends Tower {
             switch (levelCurrent){
                 case 2:
                     placeTower = new Sprite(TowerAssets.textureArcherTowerLevel2);
-                    damage += 15;
+                    damage += 20;
                     price = price + priceUp;
                     PlayGame.coinNumber -= price;
                     placeTower.setPosition(positionCenter.x - placeTower.getWidth() / 2,positionCenter.y - placeTower.getHeight()/2 + 10);
@@ -52,7 +52,7 @@ public class ArcherTower extends Tower {
                     placeTower = new Sprite(TowerAssets.textureArcherTowerLevel3);
                     archer.arrow = new Arrow(3);
                     archer.arrow.setPosition(new CoOrdinate(archer.positionCenter.x,archer.positionCenter.y));
-                    damage += 15;
+                    damage += 20;
                     price = price + priceUp;
                     PlayGame.coinNumber -= price;
                     placeTower.setPosition(positionCenter.x - placeTower.getWidth() / 2,positionCenter.y - placeTower.getHeight()/2 + 10);
@@ -63,7 +63,7 @@ public class ArcherTower extends Tower {
                     placeTower.setPosition(positionCenter.x - placeTower.getWidth() / 2,positionCenter.y - placeTower.getHeight()/2 + 10);
                     archer.arrow = new Arrow(4);
                     archer.arrow.setPosition(new CoOrdinate(archer.positionCenter.x,archer.positionCenter.y));
-                    damage += 15;
+                    damage += 20;
                     price = price + priceUp;
                     PlayGame.coinNumber -= price;
                     break;

@@ -7,9 +7,13 @@ import com.mynta.gametowerdefense.MyGame;
 public class AuxiliaryAssets extends Assets {
     public static TextureAtlas light;
     public static Texture lightingIcon;
-    public static Texture frameOfIcon;
     public static Texture lightingIconOff;
+
+    public static TextureAtlas textureAtlasFire;
+    public static Texture fireIcon;
+
     public static Texture loading;
+    public static Texture frameOfIcon;
 
     public static void ManagerLoad(){
         MyGame.manager.load("Common/lighting.atlas",TextureAtlas.class);
@@ -17,6 +21,8 @@ public class AuxiliaryAssets extends Assets {
         MyGame.manager.load("Common/frameOfLightingIcon.png",Texture.class);
         MyGame.manager.load("Common/lightingIconOff.png",Texture.class);
         MyGame.manager.load("Common/loadingLighting.png",Texture.class);
+        MyGame.manager.load("Common/fire.atlas",TextureAtlas.class);
+        MyGame.manager.load("Common/fireIcon.png",Texture.class);
     }
 
     public static void LoadToProject(){
@@ -32,6 +38,9 @@ public class AuxiliaryAssets extends Assets {
 
         loading = MyGame.manager.get("Common/loadingLighting.png");
         loading.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+
+        textureAtlasFire = MyGame.manager.get("Common/fire.atlas");
+        fireIcon = MyGame.manager.get("Common/fireIcon.png");
     }
 
     public static void Clean(){
@@ -40,5 +49,8 @@ public class AuxiliaryAssets extends Assets {
         frameOfIcon.dispose();
         lightingIconOff.dispose();
         loading.dispose();
+
+        textureAtlasFire.dispose();
+        fireIcon.dispose();
     }
 }

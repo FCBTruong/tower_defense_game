@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mynta.gametowerdefense.Assets.MapAssets;
+import com.mynta.gametowerdefense.Auxiliary.Fire;
 import com.mynta.gametowerdefense.Auxiliary.Lighting;
 import com.mynta.gametowerdefense.Scenery.Bird;
 import com.mynta.gametowerdefense.Scenery.Flag;
@@ -38,6 +39,7 @@ public class MapGame {
 
     //auxiliary */
     public Lighting lighting;
+    public Fire fire;
 
     // character, tower...;
     public MapGame(){
@@ -58,6 +60,7 @@ public class MapGame {
         heartNumber = 15;
 
         lighting = new Lighting();
+        fire = new Fire();
     }
 
     public void addTower(Tower tower){

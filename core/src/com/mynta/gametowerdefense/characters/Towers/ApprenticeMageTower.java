@@ -12,7 +12,9 @@ import com.mynta.gametowerdefense.utils.CoOrdinate;
 
 public class ApprenticeMageTower extends Tower {
     ApprenticeMage apprenticeMage;
+    private float coolTimeMax;
     public ApprenticeMageTower(){
+        priceUp = 70;
         levelMax = 3;
         price = 100;
         placeTower = new Sprite(TowerAssets.textureApprenticeMageTowerLevel1);
@@ -20,7 +22,8 @@ public class ApprenticeMageTower extends Tower {
         towerType = TowerType.APPRENTICE_MAGE;
         apprenticeMage = new ApprenticeMage();
         apprenticeMage.setPosition(new CoOrdinate(position.x + 55,position.y + 121));
-        damage = 15;
+        damage = 25;
+        coolTimeMax = 20;
     }
 
     public void setPosition(CoOrdinate position){
@@ -37,7 +40,8 @@ public class ApprenticeMageTower extends Tower {
                     placeTower = new Sprite(TowerAssets.textureApprenticeMageTowerLevel2);
                     apprenticeMage.magicBullet = new MagicBullet(2);
                     apprenticeMage.magicBullet.setPosition(new CoOrdinate(apprenticeMage.positionCenter.x,apprenticeMage.positionCenter.y));
-                    damage += 20;
+                    damage += 25;
+                    coolTimeMax = 18;
                     price = price + priceUp;
                     PlayGame.coinNumber -= price;
                     placeTower.setPosition(positionCenter.x - placeTower.getWidth() / 2,positionCenter.y - placeTower.getHeight()/2 + 10);
@@ -47,7 +51,8 @@ public class ApprenticeMageTower extends Tower {
                     placeTower = new Sprite(TowerAssets.textureApprenticeMageTowerLevel3);
                     apprenticeMage.magicBullet = new MagicBullet(3);
                     apprenticeMage.magicBullet.setPosition(new CoOrdinate(apprenticeMage.positionCenter.x,apprenticeMage.positionCenter.y));
-                    damage += 25;
+                    damage += 30;
+                    coolTimeMax = 16;
                     price = price + priceUp;
                     PlayGame.coinNumber -= price;
                     placeTower.setPosition(positionCenter.x - placeTower.getWidth() / 2,positionCenter.y - placeTower.getHeight()/2 + 10);
@@ -62,7 +67,7 @@ public class ApprenticeMageTower extends Tower {
     }
 
     public void attack() {
-        if(apprenticeMage.coolTime <= 20){
+        if(apprenticeMage.coolTime <= coolTimeMax){
             apprenticeMage.characterStatus = CharacterStatus.FIGHT;
             apprenticeMage.coolTime += 0.5;
         }

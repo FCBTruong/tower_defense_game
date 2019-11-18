@@ -420,6 +420,9 @@ public class SetMap {
         Tower tower7 = new Tower();
         tower7.setPosition(new CoOrdinate(2250,820));
         tower7.setPositionOrigin(new CoOrdinate(2250,700));
+        Tower tower8 = new Tower();
+        tower8.setPosition(new CoOrdinate(1660,1140));
+        tower8.setPositionOrigin(new CoOrdinate(1550,1150));
 
 
         /** set towers for MAP */
@@ -430,10 +433,11 @@ public class SetMap {
         MAP_LEVEL2.addTower(tower5);
         MAP_LEVEL2.addTower(tower6);
         MAP_LEVEL2.addTower(tower7);
+        MAP_LEVEL2.addTower(tower8);
 
         // set A WindMill for map
 
-        MAP_LEVEL2.setCoinNumber(1000);
+        MAP_LEVEL2.setCoinNumber(1200);
         MAP_LEVEL2.setHeartNumber(15);
 
         // create a bird

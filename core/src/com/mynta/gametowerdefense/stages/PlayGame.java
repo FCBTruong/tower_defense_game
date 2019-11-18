@@ -245,9 +245,16 @@ public class PlayGame {
             } else
                 mapGame.waveList.get(indexWaveCurrent).radar(mapGame.towerList[i]);
         }
+
+        // Auxiliary attack
         if(mapGame.lighting.attack){
             mapGame.waveList.get(indexWaveCurrent).lightingAttack(mapGame.lighting);
             mapGame.lighting.attack = false;
+        }
+
+        if(mapGame.fire.attack){
+            mapGame.waveList.get(indexWaveCurrent).fireAttack(mapGame.fire);
+            mapGame.fire.attack = false;
         }
     }
 
@@ -322,8 +329,14 @@ public class PlayGame {
         }
 
         // show auxiliary /
+
+        //lighting
         mapGame.lighting.touch();
         mapGame.lighting.show(batch);
+
+        // fire
+        mapGame.fire.touch();
+        mapGame.fire.show(batch);
     }
 
     public void dispose(){

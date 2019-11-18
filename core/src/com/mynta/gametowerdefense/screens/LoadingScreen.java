@@ -39,6 +39,8 @@ public class LoadingScreen extends AbstractScreen{
     private LoadingStatus loadingStatus;
     private float coolTime;
     private AssetManager managerOfLoading;
+    private float sizeOfTapToPlay;
+    private float displayTapToPlay;
 
     public LoadingScreen(MyGame game) {
         super(game);
@@ -51,6 +53,8 @@ public class LoadingScreen extends AbstractScreen{
         introduce = new Sprite(textureIntroduce);
 
         loadingStatus = LoadingStatus.LOAD_INTRODUCE;
+        sizeOfTapToPlay = 400;
+        displayTapToPlay = 1;
     }
 
     @Override
@@ -117,7 +121,6 @@ public class LoadingScreen extends AbstractScreen{
                     textureTapToPlay = game.manager.get("Common/tapToPlay.png");
                     textureTapToPlay.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
                     tapToPlay = new Sprite(textureTapToPlay);
-                    tapToPlay.setPosition(1240,45);
 
                     textureTapScreen = game.manager.get("Common/tapToPlayScreen.png");
                     textureTapScreen.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
@@ -135,6 +138,15 @@ public class LoadingScreen extends AbstractScreen{
                     game.setScreen(new GameScreen(this.game));
                 }
                 tapToPlayScreen.draw(spriteBatch);
+                tapToPlay.setSize(sizeOfTapToPlay, sizeOfTapToPlay);
+                tapToPlay.setPosition(1440 - sizeOfTapToPlay / 2, 120 - sizeOfTapToPlay / 2);
+                sizeOfTapToPlay -= displayTapToPlay * 2;
+                if(sizeOfTapToPlay <= 300) {
+                    displayTapToPlay = -1;
+                }
+                if(sizeOfTapToPlay >= 400){
+                    displayTapToPlay = 1;
+                }
                 tapToPlay.draw(spriteBatch);
             }
             // to do
