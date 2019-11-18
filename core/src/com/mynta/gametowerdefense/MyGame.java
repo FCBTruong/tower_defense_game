@@ -20,7 +20,6 @@ public class MyGame extends Game implements ApplicationListener, GestureDetector
         //** read Data from file */
         Preferences prefs = Gdx.app.getPreferences("TowerDefense");
 
-        prefs.clear();
         //If the preference key is empty, create it by putting a value into it
         if(!prefs.contains("sound")) {
             prefs.putBoolean("sound", true);
